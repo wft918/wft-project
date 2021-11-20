@@ -1,33 +1,19 @@
 export default [
   {
-    name:'导航1',
+    name:'首页',
     id:'1',
-    children:[
-      {
-        name:'导航1-1',
-        id:'11',
-        children:[]
-      },
-      {
-        name:'导航1-2',
-        id:'12',
-        children:[]
-      },
-      {
-        name:'导航1-3',
-        id:'13',
-        children:[]
-      }
-    ]
+    children:[],
+    path:'/home'
   },
   {
-    name:'导航2',
+    name:'练习',
     id:'2',
     children:[
       {
-        name:'导航2-1',
+        name:'图片懒加载',
         id:'21',
-        children:[]
+        children:[],
+        path:'/lazyLoad'
       }
     ]
   },

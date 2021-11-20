@@ -3,7 +3,7 @@
   <!-- 有子级 -->
   <el-submenu v-if="menu.children && menu.children.length" :index="menu.id">
     <template slot="title">
-      <i class="el-icon-location"></i>
+      <!-- <i class="el-icon-location"></i> -->
       <span>{{menu.name}}</span>
     </template>
     <!-- 递归 -->
@@ -12,8 +12,8 @@
 
 
   <!-- 无子级 -->
-  <el-menu-item v-else :index="menu.id">
-    <i class="el-icon-menu"></i>
+  <el-menu-item v-else :index="menu.id" @click="gotoRouteHandle(menu)">
+    <!-- <i class="el-icon-menu"></i> -->
     <span slot="title">{{menu.name}}</span>
   </el-menu-item>
 
@@ -33,6 +33,11 @@
     props: {
       menu: {
         type: Object
+      }
+    },
+    methods: {
+      gotoRouteHandle(menu) {
+        this.$router.replace(menu.path)
       }
     }
   }
