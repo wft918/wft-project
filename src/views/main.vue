@@ -54,13 +54,13 @@ export default {
   }
 
   .left {
-    width: 10%;
+    width: 12%;
     height: 100%;
     background-color: #d3dce6;
   }
   
   .right {
-    width: 90%;
+    width: 88%;
     height: 100%;
     padding: 20px;
     box-sizing: border-box;

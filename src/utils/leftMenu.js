@@ -13,7 +13,13 @@ export default [
         name:'图片懒加载',
         id:'21',
         children:[],
-        path:'/lazyLoad'
+        path:'/practice/lazyLoad'
+      },
+      {
+        name:'easyplayer',
+        id:'22',
+        children:[],
+        path:'/practice/easyPlayer'
       }
     ]
   },

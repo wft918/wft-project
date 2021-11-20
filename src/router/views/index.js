@@ -1,7 +1,7 @@
 export default [
   {
     path: "/",
-    name: "home",
+    name: "main",
     component: () => import('@/views/main'),
     redirect: {name:'home'},
     children:[
@@ -14,12 +14,20 @@ export default [
         component: () => import('@/views/pages/home/home')
       },
       {
-        path: 'lazyLoad',
+        path: 'practice/lazyLoad',
         name: 'lazyLoad',
         meta: {
           title: '图片懒加载'
         },
-        component: () => import('@/views/pages/photoLazyLoad/photoLazyLoad')
+        component: () => import('@/views/pages/practice/photoLazyLoad/photoLazyLoad')
+      },
+      {
+        path: 'practice/easyPlayer',
+        name: 'easyplayer',
+        meta: {
+          title: 'easyplayer'
+        },
+        component: () => import('@/views/pages/practice/easyPlayer/easyPlayer')
       },
     ]
   },
