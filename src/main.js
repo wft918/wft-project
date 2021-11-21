@@ -6,6 +6,7 @@ import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
 import './styles/element-variables.scss'
 import http from '@/utils/request1'
+import utils from '@/utils'
 import VueLazyLoad from 'vue-lazyload'
 
 
@@ -21,6 +22,7 @@ Vue.use(VueLazyLoad, {
 Vue.config.productionTip = false;
 
 Vue.prototype.$http = http
+Vue.prototype.$utils = utils
 Vue.prototype.$events = new Vue()
 
 new Vue({
