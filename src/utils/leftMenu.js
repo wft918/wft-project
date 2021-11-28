@@ -26,6 +26,12 @@ export default [
         id:'23',
         children:[],
         path:'/practice/videojs'
+      },
+      {
+        name:'拖拽',
+        id:'24',
+        children:[],
+        path:'/practice/dragtest'
       }
     ]
   },

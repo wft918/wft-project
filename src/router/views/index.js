@@ -37,6 +37,14 @@ export default [
         },
         component: () => import('@/views/pages/practice/videojs/videoModel')
       },
+      {
+        path: 'practice/dragtest',
+        name: 'dragtest',
+        meta: {
+          title: '拖拽'
+        },
+        component: () => import('@/views/pages/practice/dragTest/dragTest')
+      },
     ]
   },
 ]
