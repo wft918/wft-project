@@ -1,4 +1,5 @@
 const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -15,6 +16,24 @@ module.exports = {
         args[0].title = 'DEMO'
         return args
       })
+  },
+  configureWebpack: {
+    plugins:[
+          new CopyWebpackPlugin([
+            {
+              from: 'node_modules/@easydarwin/easyplayer/dist/component/EasyPlayer.swf',
+              to: './libs/EasyPlayer/'
+            },
+            {
+              from: 'node_modules/@easydarwin/easyplayer/dist/component/crossdomain.xml',
+              to: './libs/EasyPlayer/'
+            },
+            {
+              from: 'node_modules/@easydarwin/easyplayer/dist/component/EasyPlayer-lib.min.js',
+              to: './libs/EasyPlayer/'
+            }
+          ])
+    ]
   },
   css: {
     loaderOptions: {

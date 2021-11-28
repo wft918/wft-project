@@ -29,6 +29,14 @@ export default [
         },
         component: () => import('@/views/pages/practice/easyPlayer/easyPlayer')
       },
+      {
+        path: 'practice/videojs',
+        name: 'videojs',
+        meta: {
+          title: 'videojs'
+        },
+        component: () => import('@/views/pages/practice/videojs/videoModel')
+      },
     ]
   },
 ]

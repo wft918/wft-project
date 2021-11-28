@@ -20,6 +20,12 @@ export default [
         id:'22',
         children:[],
         path:'/practice/easyPlayer'
+      },
+      {
+        name:'videojs',
+        id:'23',
+        children:[],
+        path:'/practice/videojs'
       }
     ]
   },
