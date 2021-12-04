@@ -18,21 +18,21 @@ module.exports = {
       })
   },
   configureWebpack: {
-    plugins:[
-          new CopyWebpackPlugin([
-            {
-              from: 'node_modules/@easydarwin/easyplayer/dist/component/EasyPlayer.swf',
-              to: './libs/EasyPlayer/'
-            },
-            {
-              from: 'node_modules/@easydarwin/easyplayer/dist/component/crossdomain.xml',
-              to: './libs/EasyPlayer/'
-            },
-            {
-              from: 'node_modules/@easydarwin/easyplayer/dist/component/EasyPlayer-lib.min.js',
-              to: './libs/EasyPlayer/'
-            }
-          ])
+    plugins: [
+      new CopyWebpackPlugin([
+        {
+          from: 'node_modules/@easydarwin/easyplayer/dist/component/EasyPlayer.swf',
+          to: './libs/EasyPlayer/'
+        },
+        {
+          from: 'node_modules/@easydarwin/easyplayer/dist/component/crossdomain.xml',
+          to: './libs/EasyPlayer/'
+        },
+        {
+          from: 'node_modules/@easydarwin/easyplayer/dist/component/EasyPlayer-lib.min.js',
+          to: './libs/EasyPlayer/'
+        }
+      ])
     ]
   },
   css: {

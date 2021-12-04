@@ -8,6 +8,7 @@ import './styles/element-variables.scss'
 import http from '@/utils/request1'
 import utils from '@/utils'
 import VueLazyLoad from 'vue-lazyload'
+import '@/assets/font/font.css'
 import 'video.js/dist/video-js.css'
 
 

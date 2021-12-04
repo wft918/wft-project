@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div v-for="item in list" :key="item.age">{{item.name}}</div>
+    <div v-for="item in list" :key="item.age" style="font-family: ysbth;">{{item.name}}</div>
     <el-button @click="butClick">点击push</el-button>
   </div>
 </template>
