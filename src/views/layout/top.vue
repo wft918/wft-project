@@ -81,7 +81,8 @@
 <style scoped lang="scss">
   .time {
     font-family: 'ysbth';
-    font-style: oblique;  //倾斜
+    /* 字体倾斜 */
+    font-style: oblique;
     background-image: -webkit-linear-gradient(left,green,yellow,pink, blue, red 25%,green 35%,blue 50%,yellow 60%, red 75%, pink 85%,blue 100%);
     /* //颜色填充 透明 */
     -webkit-text-fill-color: transparent;
@@ -105,6 +106,8 @@
   .week {
     font-family: 'ysbth';
     color: #8c888b;
+    /* 字体倾斜 */
+    font-style: oblique;
     background: -webkit-linear-gradient(45deg, #70f7fe, #fbd7c6, #fdefac, #392bf3, #bed5f5);
     -moz-linear-gradient: (45deg, #70f7fe, #fbd7c6, #fdefac, #bfb5dd, #bed5f5);
     -ms-linear-gradient: (45deg, #70f7fe, #fbd7c6, #fdefac, #bfb5dd, #bed5f5);
