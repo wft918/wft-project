@@ -3,7 +3,8 @@ export default [
     name:'首页',
     id:'1',
     children:[],
-    path:'/home'
+    path:'/home',
+    component: () => import('@/views/pages/home/home')
   },
   {
     name:'练习',
@@ -13,25 +14,29 @@ export default [
         name:'图片懒加载',
         id:'21',
         children:[],
-        path:'/practice/lazyLoad'
+        path:'/practice/lazyLoad',
+        component: () => import('@/views/pages/practice/photoLazyLoad/photoLazyLoad')
       },
       {
         name:'easyplayer',
         id:'22',
         children:[],
-        path:'/practice/easyPlayer'
+        path:'/practice/easyPlayer',
+        component: () => import('@/views/pages/practice/easyPlayer/easyPlayer')
       },
       {
         name:'videojs',
         id:'23',
         children:[],
-        path:'/practice/videojs'
+        path:'/practice/videojs',
+        component: () => import('@/views/pages/practice/videojs/videoModel')
       },
       {
         name:'拖拽',
         id:'24',
         children:[],
-        path:'/practice/dragtest'
+        path:'/practice/dragtest',
+        component: () => import('@/views/pages/practice/dragTest/dragTest')
       }
     ]
   },

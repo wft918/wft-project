@@ -37,7 +37,9 @@
     },
     methods: {
       gotoRouteHandle(menu) {
-        this.$router.replace(menu.path)
+        if(menu.path) {
+          this.$router.replace(menu.path)
+        }
       }
     }
   }
