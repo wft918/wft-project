@@ -18,22 +18,29 @@ export default [
         component: () => import('@/views/pages/practice/photoLazyLoad/photoLazyLoad')
       },
       {
-        name:'easyplayer',
+        name:'VueDraggableResizable2',
         id:'22',
+        children:[],
+        path:'/practice/VueDraggableResizable2',
+        component: () => import('@/views/pages/practice/draggableResizable/draggableResizable')
+      },
+      {
+        name:'easyplayer',
+        id:'23',
         children:[],
         path:'/practice/easyPlayer',
         component: () => import('@/views/pages/practice/easyPlayer/easyPlayer')
       },
       {
         name:'videojs',
-        id:'23',
+        id:'24',
         children:[],
         path:'/practice/videojs',
         component: () => import('@/views/pages/practice/videojs/videoModel')
       },
       {
         name:'拖拽',
-        id:'24',
+        id:'25',
         children:[],
         path:'/practice/dragtest',
         component: () => import('@/views/pages/practice/dragTest/dragTest')

@@ -10,6 +10,12 @@ import utils from '@/utils'
 import VueLazyLoad from 'vue-lazyload'
 import '@/assets/font/font.css'
 import 'video.js/dist/video-js.css'
+// 可拖拽缩放组件全局注册 -- VueDraggableResizable
+import VueDraggableResizable from 'vue-draggable-resizable'
+// optionally import default styles
+import 'vue-draggable-resizable/dist/VueDraggableResizable.css'
+
+Vue.component('vue-draggable-resizable', VueDraggableResizable)
 
 
 Vue.use(ElementUI);
