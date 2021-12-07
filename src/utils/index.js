@@ -16,4 +16,4 @@ export function deepClone(sourceObj) {
 
 
 
-export default {deepClone}
+export default { deepClone }

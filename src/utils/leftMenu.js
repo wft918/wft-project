@@ -44,11 +44,18 @@ export default [
         children:[],
         path:'/practice/dragtest',
         component: () => import('@/views/pages/practice/dragTest/dragTest')
+      },
+      {
+        name:'局部放大',
+        id:'26',
+        children:[],
+        path:'/practice/localAmplification',
+        component: () => import('@/views/pages/practice/localAmplification/localAmplification')
       }
     ]
   },
   {
-    name:'导航3',
+    name:'图表',
     id:'3',
     children:[]
   }
