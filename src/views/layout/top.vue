@@ -4,13 +4,13 @@
     <!-- 右边 -->
     <div style="height: 100%;float: right;display: flex;">
       <!-- 时间 -->
-      <div style="height: 100%;display: flex;align-items: center;margin-right: 20px;font-size: 30px;">
+      <div style="height: 100%;display: flex;align-items: center;margin-right: .104167rem;font-size: .15625rem;">
         <div class="time">{{currentTime}}</div>
       </div>
       <!-- 日期--周 -->
       <div style="height: 100%;display: flex;flex-direction: column;justify-content: center;text-align: center;">
         <div class="date">{{currentDate}}</div>
-        <div class="week" style="margin-top: 5px;">{{currentWeek}}</div>
+        <div class="week" style="margin-top: .026042rem;">{{currentWeek}}</div>
       </div>
     </div>
   </div>
@@ -104,6 +104,7 @@
 
   .date,
   .week {
+    font-size: .083333rem;
     font-family: 'ysbth';
     color: #8c888b;
     /* 字体倾斜 */
@@ -123,7 +124,7 @@
           backgroud-position: 0 0;
       }
       to {
-          background-position: 2000px 0;
+          background-position: 10.416667rem 0;
       }
   }
 </style>

@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import '@/utils/flexible'
 import top from './layout/top'
 import left from './layout/left'
 export default {
@@ -43,7 +44,7 @@ export default {
     width: 100%;
     height: 7%;
     background: #b3c0d1;
-    padding: 0 20px;
+    padding: 0 .104167rem;
     box-sizing: border-box;
   }
 
@@ -62,7 +63,7 @@ export default {
   .right {
     width: 88%;
     height: 100%;
-    padding: 20px;
+    padding: .104167rem;
     box-sizing: border-box;
     background-color: #f5f7fa;
   }

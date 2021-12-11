@@ -2,9 +2,15 @@ export default [
   {
     name:'首页',
     id:'1',
-    children:[],
-    path:'/home',
-    component: () => import('@/views/pages/home/home')
+    children:[
+      {
+        name:'首页',
+        id:'11',
+        children:[],
+        path:'/home',
+        component: () => import('@/views/pages/home/home')
+      }
+    ]
   },
   {
     name:'练习',
@@ -57,6 +63,21 @@ export default [
   {
     name:'图表',
     id:'3',
-    children:[]
+    children:[
+      {
+        name:'柱状图',
+        id:'31',
+        children:[],
+        path:'/commonCharts/commonBar',
+        component: () => import('@/views/pages/commonCharts/commonBar/commonBar')
+      },
+      {
+        name:'折线图',
+        id:'32',
+        children:[],
+        path:'/commonCharts/commonLine',
+        component: () => import('@/views/pages/commonCharts/commonLine/commonLine')
+      }
+    ]
   }
 ]
