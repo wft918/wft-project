@@ -9,16 +9,24 @@
         </dv-border-box-1>
       </div>
       <div class="branch">
-        <dv-border-box-2>
+        <dv-border-box-3>
           <bar2 :id="'bar2'"></bar2>
+        </dv-border-box-3>
+      </div>
+      <div class="branch">
+        <dv-border-box-2>
+          <bar3 :id="'bar3'"></bar3>
         </dv-border-box-2>
       </div>
-      <div class="branch"></div>
     </div>
 
     <!-- 中间 -->
     <div class="center">
-      <div class="branch"></div>
+      <div class="branch">
+        <dv-border-box-4>
+          <bar4 :id="'bar4'"></bar4>
+        </dv-border-box-4>
+      </div>
       <div class="branch"></div>
       <div class="branch"></div>
     </div>
@@ -35,6 +43,8 @@
   // import dvBorderBox1 from '@/components/dv-border-box/dv-border-box-1'
   import bar1 from './charts/bar1'
   import bar2 from './charts/bar2'
+  import bar3 from './charts/bar3'
+  import bar4 from './charts/bar4'
   export default {
     data() {
       return {
@@ -46,7 +56,9 @@
     components: {
       // dvBorderBox1
       bar1,
-      bar2
+      bar2,
+      bar3,
+      bar4
     },
     mounted() {
       setTimeout(() => {
