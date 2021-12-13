@@ -135,7 +135,10 @@
               label: {
                 show:true,
                 position: 'top',
-                fontSize:fontChart(13)
+                textStyle: {
+                  color:'#fff',
+                  fontSize:fontChart(13)
+                }
               },
               data: this.yValue1,
               markLine: {
@@ -179,11 +182,14 @@
               barWidth: '20%',
               itemStyle: {
                 color: '#02bfff',
-
               },
               label: {
                 show:true,
-                position: 'top'
+                position: 'top',
+                textStyle: {
+                  color:'#fff',
+                  fontSize:fontChart(13)
+                }
               },
               data: this.yValue2
             }

@@ -77,6 +77,13 @@ export default [
         children:[],
         path:'/commonCharts/commonLine',
         component: () => import('@/views/pages/commonCharts/commonLine/commonLine')
+      },
+      {
+        name:'饼图',
+        id:'33',
+        children:[],
+        path:'/commonCharts/commonPie',
+        component: () => import('@/views/pages/commonCharts/commonPie/commonPie')
       }
     ]
   }

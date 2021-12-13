@@ -146,6 +146,7 @@
               label: {
                 show: true,
                 position: 'top',
+                fontSize:fontChart(13)
               },
               data: this.yValue2
             }
@@ -158,7 +159,7 @@
       selfAdaption() {
         if(!this.charts) return
         this.charts.resize()
-        this.drawBar(this.id)
+        this.drawBar()
       }
     }
   }

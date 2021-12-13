@@ -94,7 +94,7 @@
             }
           },
           yAxis: [
-            {
+            {  //左边y轴
               type: 'value',
               name: '(m³/min)',
               axisLabel: {
@@ -111,7 +111,7 @@
                 }
               },
             },
-            {
+            { //右边y轴
               type: 'value',
               name: '(%)',
               min: 0,
@@ -160,6 +160,14 @@
               emphasis: {
                 focus: 'series'
               },
+              label: {  //柱子顶部是否显示数值
+                show:false,
+                position: 'top',
+                textStyle: {
+                  color:'#fff',
+                  fontSize:fontChart(13)
+                }
+              },
               data: this.yValue1
             },
             {
@@ -168,6 +176,14 @@
               stack: 'Ad',
               emphasis: {
                 focus: 'series'
+              },
+              label: {
+                show:false,
+                position: 'top',
+                textStyle: {
+                  color:'#fff',
+                  fontSize:fontChart(13)
+                }
               },
               data: this.yValue2
             },
@@ -178,6 +194,14 @@
               emphasis: {
                 focus: 'series'
               },
+              label: {
+                show:false,
+                position: 'top',
+                textStyle: {
+                  color:'#fff',
+                  fontSize:fontChart(13)
+                }
+              },
               data: this.yValue3
             },
             {
@@ -187,6 +211,14 @@
               emphasis: {
                 focus: 'series'
               },
+              label: {
+                show:false,
+                position: 'top',
+                textStyle: {
+                  color:'#fff',
+                  fontSize:fontChart(13)
+                }
+              },
               data: this.yValue4
             },
             {
@@ -195,6 +227,14 @@
               data: this.yValue5,
               emphasis: {
                 focus: 'series'
+              },
+              label: {
+                show:false,
+                position: 'top',
+                textStyle: {
+                  color:'#fff',
+                  fontSize:fontChart(13)
+                }
               },
               // markLine: {
               //   lineStyle: {
@@ -209,6 +249,14 @@
               yAxisIndex: 1,
               emphasis: {
                 focus: 'series'
+              },
+              label: {
+                show:false,
+                position: 'top',
+                textStyle: {
+                  color:'#fff',
+                  fontSize:fontChart(13)
+                }
               },
               data: this.yValue6
             },

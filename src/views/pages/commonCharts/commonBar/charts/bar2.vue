@@ -146,7 +146,7 @@
       selfAdaption() {
         if (!this.charts) return
         this.charts.resize()
-        this.drawBar(this.id)
+        this.drawBar()
       }
     }
   }
