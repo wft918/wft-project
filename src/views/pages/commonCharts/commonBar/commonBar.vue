@@ -27,7 +27,11 @@
           <bar4 :id="'bar4'"></bar4>
         </dv-border-box-4>
       </div>
-      <div class="branch"></div>
+      <div class="branch">
+        <dv-border-box-4 :reverse="true">
+          <bar5 :id="'bar5'"></bar5>
+        </dv-border-box-4>
+      </div>
       <div class="branch"></div>
     </div>
 
@@ -45,6 +49,7 @@
   import bar2 from './charts/bar2'
   import bar3 from './charts/bar3'
   import bar4 from './charts/bar4'
+  import bar5 from './charts/bar5'
   export default {
     data() {
       return {
@@ -58,7 +63,8 @@
       bar1,
       bar2,
       bar3,
-      bar4
+      bar4,
+      bar5
     },
     mounted() {
       setTimeout(() => {
