@@ -1,6 +1,6 @@
 <!-- 面包屑组件 -->
 <template>
-  <div style="width:100%;height: 100%;">
+  <div style="width:100%;height: 100%;overflow-x: auto;overflow-y: hidden;">
     <el-tabs v-model="currentNamePath" type="card" @tab-click="tabClick" @tab-remove="tabRemove">
       <el-tab-pane :label="'首页'" :name="'/home'"></el-tab-pane>
       <el-tab-pane v-for="(mainTab,index) in mainTabs" :key="mainTab.path" :label="mainTab.meta.title" :name="mainTab.path" closable></el-tab-pane>
