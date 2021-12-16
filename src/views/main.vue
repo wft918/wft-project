@@ -8,7 +8,12 @@
         <left></left>
       </div>
       <div class="right">
-        <router-view></router-view>
+        <div class="breadcrumb">
+          <breadcrumb></breadcrumb>
+        </div>
+        <div class="content-main">
+          <router-view></router-view>
+        </div>
       </div>
     </div>
   </div>
@@ -18,6 +23,7 @@
 import '@/utils/flexible'
 import top from './layout/top'
 import left from './layout/left'
+import breadcrumb from './layout/breadcrumb'
 export default {
   data() {
     return {
@@ -26,7 +32,8 @@ export default {
   },
   components: {
     top,
-    left
+    left,
+    breadcrumb
   },
   mounted() {
 
@@ -66,5 +73,21 @@ export default {
     padding: .104167rem;
     box-sizing: border-box;
     background-color: #f5f7fa;
+  }
+
+  .breadcrumb {
+    width: 100%;
+    height: .213542rem;
+    border-bottom: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    background-color: #fff;
+  }
+
+  .content-main {
+    width: 100%;
+    height: calc(100% - .213542rem);
+    padding: .052083rem;
+    box-sizing: border-box;
+    background-color: #fff;
   }
 </style>

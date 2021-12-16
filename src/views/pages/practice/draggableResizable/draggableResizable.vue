@@ -1,6 +1,6 @@
 <template>
   <div style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">
-    <div style="width: 850px;height: 850px;border: 1px solid red;padding: 10px 0 0 10px;box-sizing: border-box;">
+    <div style="width: 4.427083rem;height: 2.864583rem;border: 1px solid red;padding: 10px 0 0 10px;box-sizing: border-box;">
       <vue-draggable-resizable :w="400" :h="400" :min-width="200" :min-height="200" @dragging="onDrag" @resizing="onResize" :parent="true">
         <bar :id="'testBar'" :resizeNum="resizeNum"></bar>
       </vue-draggable-resizable>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>
+    EasyPlayer
+  </title>
+  <!-- <link rel="icon" href="./favicon.ico"> -->
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js"></script>
+</head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .playerList {
+    padding: 6px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 6px 6px;
+    align-items: center;
+  }
+</style>
+<body>
+<div id="app">
+  <div class="playerList">
+    <template v-for="(camera,index) in cameraList">
+      <easy-player :ref="'easyPlayer'+index"
+                   :key="index"
+                   :data-index="index"
+                   :video-url="camera.videoSrc"
+                   :restart-time="2*60*1000"
+                   :debug="false"
+                   style="height:200px"
+                   @error="restartPlayer"
+                   @ended="restartPlayer"
+      ></easy-player>
+    </template>
+  </div>
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data() {
+      return {
+        username: "MagicXL",
+        usedJSHeapSize: 0,
+        cameraList: [
+          // {videoSrc: "http://demo.easynvr.com:10800/hls/stream_129/playlist.m3u8"},
+          // {videoSrc: "http://119.6.127.235:10800/flv/live/stream_7.flv"},
+          {videoSrc: "http://demo.easynvr.com:10800/hls/stream_129/playlist.m3u8"},
+          // {videoSrc: "http://119.6.127.235:10800/hls/stream_7/playlist.m3u8"},
+          // {videoSrc: "http://119.6.127.235:10800/hls/stream_93/playlist.m3u8"},
+          //
+          // {videoSrc: "http://119.6.127.235:10800/hls/stream_103/playlist.m3u8"},
+          // {videoSrc: "http://119.6.127.235:10800/hls/stream_86/playlist.m3u8"},
+          // {videoSrc: "http://119.6.127.235:10800/hls/stream_61/playlist.m3u8"},
+          // {videoSrc: "http://119.6.127.235:10800/hls/stream_82/playlist.m3u8"},
+          //
+          // {videoSrc: "http://119.6.127.235:10800/hls/stream_71/playlist.m3u8"},
+          // {videoSrc: "http://119.6.127.235:10800/hls/stream_106/playlist.m3u8"},
+          // {videoSrc: "http://119.6.127.235:10800/hls/stream_97/playlist.m3u8"},
+          // {videoSrc: "http://119.6.127.235:10800/hls/stream_105/playlist.m3u8"},
+          //
+          // {videoSrc: "http://119.6.127.235:10800/hls/stream_78/playlist.m3u8"},
+          // {videoSrc: "http://119.6.127.235:10800/hls/stream_74/playlist.m3u8"},
+          // {videoSrc: "http://119.6.127.235:10800/hls/stream_94/playlist.m3u8"},
+          // {videoSrc: "http://119.6.127.235:10800/hls/stream_95/playlist.m3u8"},
+        ]
+      }
+    },
+    created() {
+      //http://119.6.127.235:10800/hls/stream_97/20211213/20211213090002/stream_97-20211213095038-13155.ts?t=163936024300020211213
+      // /20211213090002/stream_74-20211213095226-13186.ts
+      // http://119.6.127.235:10800/hls/stream_97/20211213/20211213090002/stream_74-20211213095226-13186.ts
+      // // {videoSrc: "http://119.6.127.235:10800/hls/stream_102/playlist.m3u8"},
+      // {videoSrc: "http://119.6.127.235:10800/hls/stream_62/playlist.m3u8"},
+      // {videoSrc: "http://119.6.127.235:10800/hls/stream_7/playlist.m3u8"},
+      // {videoSrc: "http://119.6.127.235:10800/hls/stream_93/playlist.m3u8"},
+      // {videoSrc: "http://119.6.127.235:10800/hls/stream_103/playlist.m3u8"},
+      // {videoSrc: "http://119.6.127.235:10800/hls/stream_86/playlist.m3u8"},
+      // {videoSrc: "http://119.6.127.235:10800/hls/stream_61/playlist.m3u8"},
+      // {videoSrc: "http://119.6.127.235:10800/hls/stream_82/playlist.m3u8"},
+      // {videoSrc: "http://119.6.127.235:10800/hls/stream_71/playlist.m3u8"},
+      // {videoSrc: "http://119.6.127.235:10800/hls/stream_106/playlist.m3u8"},
+      // {videoSrc: "http://119.6.127.235:10800/hls/stream_97/playlist.m3u8"},
+      // {videoSrc: "http://119.6.127.235:10800/hls/stream_105/playlist.m3u8"},
+      // {videoSrc: "http://119.6.127.235:10800/hls/stream_78/playlist.m3u8"},
+      // {videoSrc: "http://119.6.127.235:10800/hls/stream_74/playlist.m3u8"},
+      // {videoSrc: "http://119.6.127.235:10800/hls/stream_94/playlist.m3u8"},
+      // {videoSrc: "http://119.6.127.235:10800/hls/stream_95/playlist.m3u8"},
+    },
+    methods: {
+      restartPlayer(e) {
+        const {index} = e.currentTarget.dataset
+        const playerRefs = "easyPlayer" + index
+        this.$refs[playerRefs].initPlayer()  // 重新初始化播放器
+      }
+    }
+  })
+
+
+</script>
+
+<script type="text/javascript" src="EasyPlayer-element.min.js"></script></body>
+
+</html>
