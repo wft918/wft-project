@@ -57,7 +57,14 @@ export default [
         children:[],
         path:'/practice/localAmplification',
         component: () => import('@/views/pages/practice/localAmplification/localAmplification')
-      }
+      },
+      {
+        name:'增删改查',
+        id:'27',
+        children:[],
+        path:'/practice/curd',
+        component: () => import('@/views/pages/practice/crud/crudList')
+      },
     ]
   },
   {

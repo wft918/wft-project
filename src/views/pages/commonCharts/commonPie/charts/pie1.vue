@@ -58,6 +58,8 @@
             left: 'left',
             align:'left',
             top:'middle',
+            itemWidth: fontChart(20),  // 设置宽度
+            itemHeight: fontChart(10), // 设置高度
             textStyle: {
               color:'#fff',
               fontSize:fontChart(12)
@@ -79,7 +81,7 @@
               },
               emphasis: {
                 itemStyle: {
-                  shadowBlur: 10,
+                  shadowBlur: fontChart(10),
                   shadowOffsetX: 0,
                   shadowColor: 'rgba(0, 0, 0, 0.5)'
                 }

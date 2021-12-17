@@ -102,8 +102,12 @@
           yAxis: {
             type: 'value',
             name: '个',
+            offset:fontChart(10),//x轴文字距离x轴的偏移量
             nameTextStyle: {
-              fontSize:fontChart(12)
+              color:'rgba(255, 255, 255, 0.8)',
+              fontSize:fontChart(12),
+              align:'right', //水平对齐方式
+              verticalAlign:'bottom'  //垂直对齐方式
             },
             axisLabel: {
               show: true,
@@ -130,6 +134,7 @@
               label: {
                 show: true,
                 position: 'top',
+                color:'rgba(255, 255, 255, 0.8)',
                 fontSize:fontChart(13)
               },
               data: this.yValue1
@@ -146,6 +151,7 @@
               label: {
                 show: true,
                 position: 'top',
+                color:'rgba(255, 255, 255, 0.8)',
                 fontSize:fontChart(13)
               },
               data: this.yValue2

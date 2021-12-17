@@ -77,6 +77,7 @@
           xAxis: {
             type: 'category',
             name: this.xname,
+            offset:fontChart(10),//x轴文字距离x轴的偏移量
             nameTextStyle: {
               color: 'rgba(255, 255, 255, 0.8)',
               fontSize: fontChart(13)
@@ -93,20 +94,22 @@
             },
             axisLabel: {
               show: true,
-              interval: 0,
+              interval: 0,//x轴全部显示
               rotate: fontChart(10),
               textStyle: {
                 color: 'rgba(255, 255, 255, 0.8)',  //更改坐标轴文字颜色
-                fontSize: fontChart(14)     //更改坐标轴文字大小
+                fontSize: fontChart(14),     //更改坐标轴文字大小
+                align:"center"
               }
             }
           },
           yAxis: {
             type: 'value',
-            name: this.yname,
+            name: this.yname, //单位
             nameTextStyle: {
               color: 'rgba(255, 255, 255, 0.8)',
-              fontSize: fontChart(13)
+              fontSize: fontChart(13),
+              align:'right'
             },
             axisLabel: {
               show: true,

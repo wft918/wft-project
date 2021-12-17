@@ -63,6 +63,8 @@
               color:'#868a96',
               fontSize:fontChart(13)
             },
+            itemWidth: fontChart(20),  // 设置宽度
+            itemHeight: fontChart(10), // 设置高度
             x : '10%',
             y : 'center',
             orient : 'vertical',  //horizontal、vertical可选

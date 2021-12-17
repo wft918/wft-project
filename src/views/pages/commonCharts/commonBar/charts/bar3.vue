@@ -86,6 +86,7 @@
           },
           xAxis: {
             type: 'category',
+            offset:fontChart(0),//x轴文字距离x轴的偏移量
             data: this.xValue,
             axisLabel: {
               textStyle: {
@@ -96,7 +97,12 @@
           yAxis: [
             {  //左边y轴
               type: 'value',
-              name: '(m³/min)',
+              name: '(m³/min)', //单位
+              nameTextStyle: {
+                color: 'rgba(255, 255, 255, 0.8)',
+                fontSize:fontChart(13),
+                align: 'right'
+              },
               axisLabel: {
                 show: true,
                 textStyle: {
@@ -113,7 +119,12 @@
             },
             { //右边y轴
               type: 'value',
-              name: '(%)',
+              name: '(%)',//单位
+              nameTextStyle: {
+                color: 'rgba(255, 255, 255, 0.8)',
+                fontSize:fontChart(13),
+                align: 'left'
+              },
               min: 0,
               max: 100,
               axisLabel: {

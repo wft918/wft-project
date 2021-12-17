@@ -86,6 +86,7 @@
           xAxis: {
             type: 'category',
             data: this.xValue,
+            offset:fontChart(0),//x轴文字距离x轴的偏移量
             axisTick: {
               show:false,
               alignWithLabel: true
@@ -106,9 +107,10 @@
           yAxis: {
             // max: 60,
             type: 'value',
-            name: 'mm',
+            name: 'mm', //单位
             nameTextStyle: {
-              fontSize:fontChart(12)
+              fontSize:fontChart(12),
+              align:'right'
             },
             axisLabel: {
               show: true,

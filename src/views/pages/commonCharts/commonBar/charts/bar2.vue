@@ -65,6 +65,7 @@
             axisTick: {
               show: false
             },
+            offset:fontChart(0),//x轴文字距离x轴的偏移量
             axisLine: {
               lineStyle: {
                 color: '#0092D5'

@@ -21,7 +21,7 @@
 <script>
   import subMenu from './left_submenu'
   export default {
-    name:'sub-menu',
+    name:'sub-menu', //递归组件一定要有name
     data() {
       return {
 
