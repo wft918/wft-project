@@ -11,6 +11,7 @@ import VueLazyLoad from 'vue-lazyload'
 import '@/assets/font/font.css'
 import 'video.js/dist/video-js.css'
 import dataV from '@jiaminghi/data-view'
+import './directive'
 
 
 // 可拖拽缩放组件全局注册 -- VueDraggableResizable

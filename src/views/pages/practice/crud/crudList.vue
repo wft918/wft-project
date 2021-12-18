@@ -54,9 +54,14 @@
       :page-sizes="[10, 20, 50, 100]" :page-size="pageSize" :total="total" background
       layout="total, sizes, prev, pager, next, jumper">
     </el-pagination>
+
+
+    <!-- 弹窗 -->
+    <crud-form ref="crudForm"></crud-form>
   </div>
 </template>
 <script>
+  import crudForm from './crudForm'
   export default {
     data() {
       return {
@@ -72,6 +77,9 @@
         dataList: [],
         loading: false,
       }
+    },
+    components: {
+      crudForm
     },
     mounted() {
       this.refreshList()
@@ -91,24 +99,28 @@
 
       },
       // 每页数
-      sizeChangeHandle() {
-
+      sizeChangeHandle(val) {
+        this.pageSize = val
+        this.pageNo = 1
+        this.refreshList()
       },
       // 当前页
-      currentChangeHandle() {
-
+      currentChangeHandle(val) {
+        this.pageNo = val
+        this.refreshList()
       },
       // 新增
       add() {
-
+        this.$refs.crudForm.init('add','')
       },
       // 修改
       edit(id) {
         id = id || this.dataListSelections.map(item => item.id)[0]
+        this.$refs.crudForm.init('edit',id)
       },
       // 查看
       view(id) {
-        id = id || this.dataListSelections.map(item => item.id)[0]
+        this.$refs.crudForm.init('view',id)
       },
       // 删除
       del(id) {
