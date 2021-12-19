@@ -12,6 +12,7 @@ import '@/assets/font/font.css'
 import 'video.js/dist/video-js.css'
 import dataV from '@jiaminghi/data-view'
 import './directive'
+import fullscreen from 'vue-fullscreen'
 
 
 // 可拖拽缩放组件全局注册 -- VueDraggableResizable
@@ -24,6 +25,7 @@ Vue.component('vue-draggable-resizable', VueDraggableResizable)
 
 Vue.use(ElementUI);
 Vue.use(dataV)
+Vue.use(fullscreen)
 
 Vue.use(VueLazyLoad, {
   preLoad: 1,
