@@ -12,7 +12,7 @@
     <div style="width: 100%;height: calc(100% - .416667rem);padding: 0 8%;">
       <div ref="videoContent" style="width: 100%;height: 100%;display: flex;justify-content: space-between;flex-wrap: wrap;align-content: space-between;">
         <div style="border: 1px solid red;" v-for="(item,index) in players" :key="item.id" :class="{'alone':players.length == 1,'fourScreen':players.length == 4,'nineScreen':players.length == 9,'sixteenScreen':players.length == 16}">
-          <easy-player @playError="playError" :index="index" :url="index == 0 || index == 2?videoUrl:'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-uni4934e7b/c4d93960-5643-11eb-a16f-5b3e54966275.m3u8'"></easy-player>
+          <easy-player @pullFlow="pullFlow" :idx="index" :url="index == 0 || index == 2?videoUrl:'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-uni4934e7b/c4d93960-5643-11eb-a16f-5b3e54966275.m3u8'"></easy-player>
         </div>
       </div>
     </div>
@@ -47,8 +47,8 @@
           })
         }
       },
-      // 播放器抛出错误
-      playError(index) {
+      // 播放异常或播放结束或直播断流  重新拉流
+      pullFlow(index) {
         console.log(index,'王福太，当前位置的播放器出错了！！！')
       },
       // 全屏展示
