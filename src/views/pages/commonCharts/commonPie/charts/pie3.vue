@@ -16,7 +16,8 @@
     props:['id','title','colorList','data','seriesCenter'],
     props: {
       id: {
-        type: String
+        type: String,
+        required:true  //声明这个参数是否必须传入
       },
       title: {
         type: String,

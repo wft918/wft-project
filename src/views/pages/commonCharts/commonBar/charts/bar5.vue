@@ -15,6 +15,7 @@
     props: {
       id: {
         type: String,
+        required:true  //声明这个参数是否必须传入
       },
       xValue: {
         type: Array,
@@ -80,7 +81,9 @@
             offset:fontChart(10),//x轴文字距离x轴的偏移量
             nameTextStyle: {
               color: 'rgba(255, 255, 255, 0.8)',
-              fontSize: fontChart(13)
+              fontSize: fontChart(13),
+              align:'center',
+              verticalAlign:'top'
             },
             data: this.xValue,
             axisTick: {
@@ -115,7 +118,8 @@
               show: true,
               textStyle: {
                 color: 'rgba(255, 255, 255, 0.8)',  //更改坐标轴文字颜色
-                fontSize: fontChart(14)      //更改坐标轴文字大小
+                fontSize: fontChart(14),      //更改坐标轴文字大小
+                align:'center'
               }
             },
             splitLine: {

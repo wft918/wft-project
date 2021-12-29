@@ -32,7 +32,8 @@
     },
     props: {
       menu: {
-        type: Object
+        type: Object,
+        required:true  //声明这个参数是否必须传入
       }
     },
     methods: {

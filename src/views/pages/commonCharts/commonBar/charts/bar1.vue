@@ -14,7 +14,8 @@
     },
     props: {
       id: {
-        type: String
+        type: String,
+        required:true  //声明这个参数是否必须传入
       },
       xValue: {
         type: Array,
@@ -113,7 +114,8 @@
               show: true,
               textStyle: {
                 color: '#7e8390',  //更改坐标轴文字颜色
-                fontSize: fontChart(13)      //更改坐标轴文字大小
+                fontSize: fontChart(13),      //更改坐标轴文字大小
+                align:'left'
               }
             },
             splitLine: {
