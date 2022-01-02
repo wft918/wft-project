@@ -14,7 +14,7 @@ const viewRouter =  [
 function handlerMenuList(menuList) {
   const pageRoute = []
   menuList.forEach(item => {
-    if(!item.children.length) {
+    if(!item.children || !item.children.length) {
       pageRoute.push(item)
     }else {
       pageRoute.push(...handlerMenuList(item.children))
