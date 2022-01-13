@@ -65,6 +65,13 @@ export default [
         path:'/practice/curd',
         component: () => import('@/views/pages/practice/crud/crudList')
       },
+      {
+        name:'穿梭框',
+        id:'28',
+        children:[],
+        path:'/practice/shuttleTable',
+        component: () => import('@/views/pages/practice/shuttleTable/shuttleTable')
+      },
     ]
   },
   {
