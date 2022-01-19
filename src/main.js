@@ -7,6 +7,7 @@ import ElementUI from 'element-ui';
 import './styles/element-variables.scss'
 import http from '@/utils/request1'
 import utils from '@/utils'
+import { deepClone } from '@/utils'
 import VueLazyLoad from 'vue-lazyload'
 import '@/assets/font/font.css'
 import 'video.js/dist/video-js.css'
@@ -39,6 +40,10 @@ Vue.config.productionTip = false;
 Vue.prototype.$http = http
 Vue.prototype.$utils = utils
 Vue.prototype.$events = new Vue()
+
+// 保存整站vuex本地储存初始状态
+window.SITE_CONFIG = {}
+window.SITE_CONFIG['storeState'] = deepClone(store.state)
 
 new Vue({
   router,
