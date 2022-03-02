@@ -12,7 +12,9 @@
       </div>
     </div>
     <div>
-      <div></div>
+      <div>
+        <Gauge />
+      </div>
       <div></div>
       <div></div>
     </div>
@@ -27,13 +29,14 @@
   import pie1 from './charts/pie1'
   import pie2 from './charts/pie2'
   import pie3 from './charts/pie3'
+  import Gauge from './charts/gauge'
   export default {
     data() {
       return {
 
       }
     },
-    components: { pie1,pie2,pie3 }
+    components: { pie1, pie2, pie3, Gauge }
   }
 </script>
 <style scoped>
