@@ -100,5 +100,25 @@ export default [
         component: () => import('@/views/pages/commonCharts/commonPie/commonPie')
       }
     ]
+  },
+  {
+    name: '画布',
+    id: '4',
+    children: [
+      {
+        name: 'Fabric',
+        id: '41',
+        children: [],
+        path: '/canvas/fabricStudy',
+        component: () => import('@/views/pages/canvas/fabricStudy/fabricStudy')
+      },
+      {
+        name: 'drawPolygon',
+        id: '42',
+        children: [],
+        path: '/canvas/drawPolygon',
+        component: () => import('@/views/pages/canvas/drawPolygon/drawPolygon')
+      }
+    ]
   }
 ]
