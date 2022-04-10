@@ -6,11 +6,7 @@ import qs from 'qs'  //querystring
 /*
  *根据环境变量区分接口的默认地址
  */
-if(process.env.NODE_ENV !== 'production') {  //开发环境
-  axios.defaults.baseURL = process.env.VUE_APP_BASE_API
-}else {
-  axios.defaults.baseURL = process.env.VUE_APP_SERVER_URL
-}
+axios.defaults.baseURL = process.env.NODE_ENV !== 'production' ? process.env.VUE_APP_BASE_API : process.env.VUE_APP_SERVER_URL
 
 /*
  *设置超时时间和跨域是否允许携带凭证
