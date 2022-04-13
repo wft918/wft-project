@@ -72,6 +72,13 @@ export default [
         path:'/practice/shuttleTable',
         component: () => import('@/views/pages/practice/shuttleTable/shuttleTable')
       },
+      {
+        name:'B站视频播放效果',
+        id:'29',
+        children:[],
+        path:'/practice/BZ-video',
+        component: () => import('@/views/pages/practice/BZ-video/index')
+      }
     ]
   },
   {

@@ -20,7 +20,7 @@
     props: {
       id: {
         type:String,
-        default:'videojs'
+        required: true
       },
       url: {
         type:String,
