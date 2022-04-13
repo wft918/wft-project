@@ -36,6 +36,9 @@ export default {
     this.isShow = true  // 确保传送到的目标元素挂载在 Teleport 组件之前
     document.getElementById('main').addEventListener('scroll', this.intersectionObserver)
   },
+  destroyed() {  // 离开页面移除监听
+    document.getElementById('main').removeEventListener('scroll', this.intersectionObserver)
+  },
   methods: {
     //  监听 sourceBox 是否在可视区域内
     intersectionObserver() {
@@ -48,6 +51,7 @@ export default {
         this.isTeleport = false
       }
     },
+    // 当不需要传送的时候，再挂载到原来的位置
     toSourceDom(dom) {
       document.getElementById('sourceBox').appendChild(dom)
     }
