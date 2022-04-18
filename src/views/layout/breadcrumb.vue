@@ -3,7 +3,7 @@
   <div style="width:100%;height: 100%;overflow-x: auto;overflow-y: hidden;">
     <el-tabs v-model="currentNamePath" type="card" @tab-click="tabClick" @tab-remove="tabRemove">
       <el-tab-pane :label="'首页'" :name="'/home'"></el-tab-pane>
-      <el-tab-pane v-for="(mainTab,index) in mainTabs" :key="mainTab.path" :label="mainTab.meta.title" :name="mainTab.path" closable></el-tab-pane>
+      <el-tab-pane v-for="mainTab in mainTabs" :key="mainTab.path" :label="mainTab.meta.title" :name="mainTab.path" closable></el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -16,7 +16,10 @@
       }
     },
     mounted() {
-
+      if(this.$route.path !== '/home') {
+        this.mainTabs = this.$route
+        this.currentNamePath = this.$route.path
+      }
     },
     computed: {
       mainTabs: {
