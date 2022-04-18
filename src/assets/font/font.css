@@ -4,3 +4,21 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "ceyy";
+  src: url('ceyy.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "pht";
+  src: url('ALIBABA-PUHUITI-HEAVY.TTF');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "YJSZ";
+  src: url('液晶数字字体.TTF');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1>{{ msg }}</h1>
+    <div class="name">{{msg}}</div>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      msg: '王福太'
+      msg: '7212'
     }
   },
   mounted(){
@@ -16,5 +16,10 @@ export default {
 }
 </script>
 <style scoped>
-
+.name {
+  font-size: 27px;
+  color: #007acc;
+  font-weight: 600;
+  font-family: 'YJSZ';
+}
 </style>
