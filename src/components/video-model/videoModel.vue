@@ -36,7 +36,7 @@
       'url': {
         handler(newValue) {
           console.log(newValue,'videojs ----->>  new  url')
-          this.init()
+          this.updateUrl()
         },
         deep:true,
         immediate:true
@@ -81,6 +81,11 @@
             this.play() // 自动播放
           })
         })
+      },
+      //  修改video的src
+      updateUrl() {
+        this.player.src(this.url)
+        this.player.play()
       }
     },
     // 离开页面销毁视频播放器
