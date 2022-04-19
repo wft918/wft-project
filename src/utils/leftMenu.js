@@ -78,6 +78,13 @@ export default [
         children:[],
         path:'/practice/BZ-video',
         component: () => import('@/views/pages/practice/BZ-video/index')
+      },
+      {
+        name:'PDF预览demo',
+        id:'291',
+        children:[],
+        path:'/practice/pdf-preview',
+        component: () => import('@/views/pages/practice/pdf-preview/index')
       }
     ]
   },
