@@ -24,10 +24,10 @@ export default [
         component: () => import('@/views/pages/practice/photoLazyLoad/photoLazyLoad')
       },
       {
-        name:'VueDraggableResizable2',
+        name:'VueDraggableResizable',
         id:'22',
         children:[],
-        path:'/practice/VueDraggableResizable2',
+        path:'/practice/VueDraggableResizable',
         component: () => import('@/views/pages/practice/draggableResizable/draggableResizable')
       },
       {
