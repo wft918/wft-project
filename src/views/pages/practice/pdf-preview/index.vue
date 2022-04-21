@@ -1,29 +1,34 @@
 <template>
-  <div class="pdf">
-    <div>
-      <button type="button" @click="changePdfPage(0)">上一页</button>
-      <button type="button" @click="changePdfPage(1)">下一页</button>
+  <div class="global">
+    <div class="preview">
+      <el-button type="success" @click="isShow = true">开始预览</el-button>
     </div>
-    <p>{{ currentPage }} / {{ pageCount }}</p>
-    <div>
-      <button type="button" @click="scaleD()">放大</button>
-      <button type="button" @click="scaleX()">缩小</button>
+    <div class="pdfContainer" v-if="isShow">
+      <div class="button">
+        <el-button type="success" @click="prev()">上一页</el-button>
+        <el-button type="success" @click="next()">下一页</el-button>
+        <el-button type="success" @click="scaleD()">放大</el-button>
+        <el-button type="success" @click="scaleX()">缩小</el-button>
+        <el-button type="success" @click="clockwise()">顺时针</el-button>
+        <el-button type="success" @click="antiClockwise()">逆时针</el-button>
+      </div>
+      <div class="pdf">
+        <pdf
+          ref="pdf"
+          :src="src"
+          :page="currentPage"
+          :rotate="pageRotate"
+          @num-pages="pageCount = $event"
+          @page-loaded="currentPage = $event"
+          @loaded="loadPdfHandler"
+        ></pdf>
+      </div>
+      <div class="page">
+        <span class="pageNum">{{ currentPage }}</span>
+        <span class="pageNum">/</span>
+        <span class="pageNum">{{ pageCount }}</span>
+      </div>
     </div>
-    <div>
-      <button type="button" @click="clock()">顺时针</button>
-      <button type="button" @click="counterClock()">逆时针</button>
-      <button type="button" @click="isShow = true">展示</button>
-    </div>
-    <pdf
-      v-if="isShow"
-      ref="pdf"
-      :src="src"
-      :page="currentPage"
-      :rotate="pageRotate"
-      @num-pages="pageCount = $event"
-      @page-loaded="currentPage = $event"
-      @loaded="loadPdfHandler"
-    ></pdf>
   </div>
 </template>
 <script>
@@ -31,11 +36,11 @@ import Pdf from "vue-pdf";
 export default {
   data() {
     return {
-      src: "http://storage.xuetangx.com/public_assets/xuetangx/PDF/PlayerAPI_v1.0.6.pdf",
+      src: "http://storage.xuetangx.com/public_assets/xuetangx/PDF/PlayerAPI_v1.0.6.pdf",  // pdf的路径 实际项目后端返回
       currentPage: 0, // pdf文件页码
       pageCount: 0, // pdf文件总页数
-      scale: 100,
-      pageRotate: 0,
+      scale: 100,  //  开始的时候默认和容器一样大即宽高都是100%
+      pageRotate: 0,  // 旋转角度
       isShow: false
     };
   },
@@ -47,45 +52,77 @@ export default {
     // pdf加载时
     loadPdfHandler(e) {
       this.currentPage = 1; // 加载的时候先加载第一页
+      this.$refs.pdf.$el.style.width = parseInt(this.scale) + "%";
+      this.$refs.pdf.$el.style.height = parseInt(this.scale) + "%";
     },
-    // 改变PDF页码,val传过来区分上一页下一页的值,0上一页,1下一页
-    changePdfPage(val) {
-      if (val === 0 && this.currentPage > 1) {
+    //  上一页
+    prev() {
+      if (this.currentPage > 1) {
         this.currentPage--;
       }
-      if (val === 1 && this.currentPage < this.pageCount) {
+    },
+    // 下一页
+    next() {
+      if (this.currentPage < this.pageCount) {
         this.currentPage++;
       }
     },
     //放大
     scaleD() {
-      this.scale += 5;
+      if(this.scale == 100) return this.$message.warning('已经是最大喽~~')
+      this.scale += 10;
       this.$refs.pdf.$el.style.width = parseInt(this.scale) + "%";
+      this.$refs.pdf.$el.style.height = parseInt(this.scale) + "%";
     },
     //缩小
     scaleX() {
-      // if (this.scale === 100) {
-      //   return;
-      // }
-      this.scale += -5;
+      if(this.scale == 40) return this.$message.warning('已经是最小喽~~')
+      this.scale += -10;
       this.$refs.pdf.$el.style.width = parseInt(this.scale) + "%";
+      this.$refs.pdf.$el.style.height = parseInt(this.scale) + "%";
     },
     // 顺时针
-    clock() {
+    clockwise() {
       this.pageRotate += 90;
     },
     // 逆时针
-    counterClock() {
+    antiClockwise() {
       this.pageRotate -= 90;
     },
   },
 };
 </script>
 <style scoped>
-.pdf {
-  width: 40%;
+.global {
+  width: 100%;
   height: 100%;
-  margin: 50px 0 0 50px;
-  border: 1px solid red;
+}
+.preview {
+  width: 100%;
+  height: 50px;
+}
+
+.pdfContainer {
+  width: 100%;
+  height: calc(100% - 50px);
+}
+.pdfContainer .button {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.pdfContainer .pdf {
+  width: 100%;
+  height: calc(100% - 100px);
+  overflow-y: auto;
+}
+.pdfContainer .page {
+  width: 100%;
+  height: 50px;
+}
+
+.pageNum {
+  font-size: 28px;
 }
 </style>
