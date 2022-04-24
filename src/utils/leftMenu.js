@@ -85,6 +85,13 @@ export default [
         children:[],
         path:'/practice/pdf-preview',
         component: () => import('@/views/pages/practice/pdf-preview/index')
+      },
+      {
+        name:'树形穿梭框',
+        id:'292',
+        children:[],
+        path:'/practice/el-tree-transfer',
+        component: () => import('@/views/pages/practice/el-tree-transfer/index')
       }
     ]
   },
