@@ -92,6 +92,13 @@ export default [
         children:[],
         path:'/practice/el-tree-transfer',
         component: () => import('@/views/pages/practice/el-tree-transfer/index')
+      },
+      {
+        name:'二维码生成',
+        id:'293',
+        children:[],
+        path:'/practice/qrcode',
+        component: () => import('@/views/pages/practice/qrcode/index')
       }
     ]
   },

@@ -17,6 +17,7 @@
     "el-tree-transfer": "^2.4.7",
     "element-ui": "^2.15.6",
     "fabric": "^5.2.1",
+    "qrcodejs2": "^0.0.2",
     "video.js": "^7.17.0",
     "videojs-contrib-hls": "^5.15.0",
     "vue": "^2.6.11",
