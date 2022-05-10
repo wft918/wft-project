@@ -99,6 +99,13 @@ export default [
         children:[],
         path:'/practice/qrcode',
         component: () => import('@/views/pages/practice/qrcode/index')
+      },
+      {
+        name:'vis拓扑图',
+        id:'294',
+        children:[],
+        path:'/practice/vis',
+        component: () => import('@/views/pages/practice/vis/index')
       }
     ]
   },
