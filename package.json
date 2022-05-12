@@ -22,6 +22,7 @@
     "videojs-contrib-hls": "^5.15.0",
     "vis": "^4.21.0-EOL",
     "vue": "^2.6.11",
+    "vue-baidu-map": "^0.21.22",
     "vue-draggable-resizable": "^2.3.0",
     "vue-fullscreen": "^2.6.1",
     "vue-lazyload": "^1.3.3",

@@ -14,6 +14,7 @@ import 'video.js/dist/video-js.css'
 import dataV from '@jiaminghi/data-view'
 import './directive'
 import fullscreen from 'vue-fullscreen'
+import BaiduMap from 'vue-baidu-map'
 
 
 // 可拖拽缩放组件全局注册 -- VueDraggableResizable
@@ -27,6 +28,10 @@ Vue.component('vue-draggable-resizable', VueDraggableResizable)
 Vue.use(ElementUI);
 Vue.use(dataV)
 Vue.use(fullscreen)
+Vue.use(BaiduMap, {
+  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+  ak: 'g8Aie8DW0ogUZvzEfP4DzdvRwyfQv41T'
+})
 
 Vue.use(VueLazyLoad, {
   preLoad: 1,

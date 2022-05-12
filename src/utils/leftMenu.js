@@ -106,6 +106,13 @@ export default [
         children:[],
         path:'/practice/vis',
         component: () => import('@/views/pages/practice/vis/index')
+      },
+      {
+        name:'BaiduMap',
+        id:'295',
+        children:[],
+        path:'/practice/BaiduMap',
+        component: () => import('@/views/pages/practice/BaiduMap/index')
       }
     ]
   },
