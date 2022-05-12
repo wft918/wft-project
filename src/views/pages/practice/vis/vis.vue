@@ -109,10 +109,8 @@ export default {
         nodes: this.nodes,
         edges: this.edges
       })
-      this.network.setOptions(options)
+      // this.network.setOptions(options)
     }
   },
 };
 </script>
-<style scoped>
-</style>
