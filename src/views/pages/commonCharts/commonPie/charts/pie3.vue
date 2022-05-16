@@ -13,7 +13,6 @@
         charts:''
       }
     },
-    props:['id','title','colorList','data','seriesCenter'],
     props: {
       id: {
         type: String,

@@ -15,7 +15,9 @@
       <div>
         <Gauge />
       </div>
-      <div></div>
+      <div>
+        <Pie4 :id="'Pie4'" />
+      </div>
       <div></div>
     </div>
     <div>
@@ -30,13 +32,14 @@
   import pie2 from './charts/pie2'
   import pie3 from './charts/pie3'
   import Gauge from './charts/gauge'
+  import Pie4 from './charts/pie4.vue'
   export default {
     data() {
       return {
 
       }
     },
-    components: { pie1, pie2, pie3, Gauge }
+    components: { pie1, pie2, pie3, Gauge, Pie4 }
   }
 </script>
 <style scoped>
