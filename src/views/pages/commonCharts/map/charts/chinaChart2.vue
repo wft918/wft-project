@@ -9,6 +9,7 @@ export default {
   data() {
     return {
       charts: "",
+      currCityName: ''
     };
   },
   props: {
@@ -33,13 +34,14 @@ export default {
   },
   methods: {
     LoadMap(cityname = this.cityname) {
+      this.currCityName = cityname
       this.charts = echarts.init(document.getElementById(this.id));
       const jsonCode = require("../../../../../assets/map/" + cityMap[cityname] + ".json");
-      echarts.registerMap("china", jsonCode);
+      echarts.registerMap(cityname, jsonCode);
       let option = {
         // backgroundColor: "black",
         geo: {
-          map: "china",
+          map: cityname,
           aspectScale: 0.8,
           layoutCenter: ["50%", "50%"],
           layoutSize: "120%",
@@ -95,7 +97,7 @@ export default {
           {
             type: "map",
             selectedMode: "multiple",
-            map: "china",
+            map: cityname,
             aspectScale: 0.8,
             layoutCenter: ["50%", "50%"], //地图位置
             layoutSize: "120%",
@@ -136,6 +138,7 @@ export default {
               },
             ],
           },
+          // 添加散点 标记点
           {
             type: "scatter",
             coordinateSystem: "geo",
@@ -204,22 +207,24 @@ export default {
           },
         ],
       };
-      this.charts.setOption(option);
+      this.charts.setOption(option, true);
       // console.log(this.charts._chartsViews);  // ...
-      this.charts.on("click", (params) => {
-        console.log(params, "params--->>");
-        if (this.charts._chartsViews.length > 0) {
-          this.charts.clear();
-        }
+      this.charts.on("click", (params) => { // 下钻
+        // if (this.charts._chartsViews.length > 0) {
+        //   this.charts.clear();
+        // }
         this.LoadMap(params.name)
       });
+      this.charts.on('contextmenu', params => {
+        this.LoadMap()
+      })
       window.addEventListener("resize", this.selfAdaption);
     },
     // 自适应
     selfAdaption() {
       if (!this.charts) return;
       this.charts.resize();
-      this.LoadMap();
+      this.LoadMap(this.currCityName);
     },
   },
 };
