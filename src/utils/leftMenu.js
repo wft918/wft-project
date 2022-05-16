@@ -140,6 +140,13 @@ export default [
         children:[],
         path:'/commonCharts/commonPie',
         component: () => import('@/views/pages/commonCharts/commonPie/commonPie')
+      },
+      {
+        name:'中国MAP',
+        id:'34',
+        children:[],
+        path:'/commonCharts/map',
+        component: () => import('@/views/pages/commonCharts/map/china')
       }
     ]
   },
