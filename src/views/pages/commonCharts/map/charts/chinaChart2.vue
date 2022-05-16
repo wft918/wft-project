@@ -32,9 +32,9 @@ export default {
     window.removeEventListener("resize", this.selfAdaption);
   },
   methods: {
-    LoadMap() {
+    LoadMap(cityname = this.cityname) {
       this.charts = echarts.init(document.getElementById(this.id));
-      const jsonCode = require("../../../../../assets/map/" + cityMap[this.cityname] + ".json");
+      const jsonCode = require("../../../../../assets/map/" + cityMap[cityname] + ".json");
       echarts.registerMap("china", jsonCode);
       let option = {
         // backgroundColor: "black",
@@ -44,33 +44,32 @@ export default {
           layoutCenter: ["50%", "50%"],
           layoutSize: "120%",
           itemStyle: {
-            normal: {
-              areaColor: {
-                type: "linear-gradient",
-                x: 0,
-                y: 1200,
-                x2: 1000,
-                y2: 0,
-                colorStops: [
-                  {
-                    offset: 0,
-                    color: "#152E6E", // 0% 处的颜色
-                  },
-                  {
-                    offset: 1,
-                    color: "#0673AD", // 50% 处的颜色
-                  },
-                ],
-                global: true, // 缺省为 false
-              },
-              shadowColor: "#229ffc",
-              shadowOffsetX: -2,
-              shadowOffsetY: 8,
-              opacity: 0.5,
+            areaColor: {
+              type: "linear-gradient",
+              x: 0,
+              y: 1200,
+              x2: 1000,
+              y2: 0,
+              colorStops: [
+                {
+                  offset: 0,
+                  color: "#152E6E", // 0% 处的颜色
+                },
+                {
+                  offset: 1,
+                  color: "#0673AD", // 50% 处的颜色
+                },
+              ],
+              global: true, // 缺省为 false
             },
-            emphasis: {
-              areaColor: "#0f5d9d",
-            },
+            shadowColor: "#229ffc",
+            shadowOffsetX: -2,
+            shadowOffsetY: 8,
+            opacity: 0.5,
+          },
+          emphasis: {
+            label: { show: false },
+            areaColor: "red",
           },
           regions: [
             {
@@ -78,12 +77,10 @@ export default {
               itemStyle: {
                 areaColor: "rgba(0, 10, 52, 1)",
                 borderColor: "rgba(0, 10, 52, 1)",
-                normal: {
-                  opacity: 0,
-                  label: {
-                    show: false,
-                    color: "#009cc9",
-                  },
+                opacity: 0,
+                label: {
+                  show: false,
+                  color: "#009cc9",
                 },
               },
               label: {
@@ -98,7 +95,7 @@ export default {
           {
             type: "map",
             selectedMode: "multiple",
-            mapType: "china",
+            map: "china",
             aspectScale: 0.8,
             layoutCenter: ["50%", "50%"], //地图位置
             layoutSize: "120%",
@@ -115,18 +112,18 @@ export default {
               fontSize: 16,
             },
             itemStyle: {
-              normal: {
-                areaColor: "#004b85",
-                borderColor: "#1cccff",
-                borderWidth: 1.8,
+              areaColor: "#004b85",
+              borderColor: "#1cccff",
+              borderWidth: 1.8,
+            },
+            emphasis: {
+              //是图形在高亮状态下的样式,比如在鼠标悬浮或者图例联动高亮时
+              label: { 
+                show: true,
+                color: '#fff'
               },
-              emphasis: {
+              itemStyle: {
                 areaColor: "#198895",
-                label: {
-                  show: true,
-                  color: "#fff",
-                  fontSize: fontChart(12),
-                },
               },
             },
             data: [
@@ -178,11 +175,9 @@ export default {
               color: "#fff",
             },
             itemStyle: {
-              normal: {
-                color: "#D8BC37", //标志颜色
-                shadowBlur: 2,
-                shadowColor: "D8BC37",
-              },
+              color: "#D8BC37", //标志颜色
+              shadowBlur: 2,
+              shadowColor: "D8BC37"
             },
             data: [  // 数据
               {
@@ -204,14 +199,19 @@ export default {
             rippleEffect: {
               brushType: "stroke",
             },
-            hoverAnimation: true,
+            // hoverAnimation: true,
             zlevel: 1,
           },
         ],
       };
       this.charts.setOption(option);
+      // console.log(this.charts._chartsViews);  // ...
       this.charts.on("click", (params) => {
         console.log(params, "params--->>");
+        if (this.charts._chartsViews.length > 0) {
+          this.charts.clear();
+        }
+        this.LoadMap(params.name)
       });
       window.addEventListener("resize", this.selfAdaption);
     },

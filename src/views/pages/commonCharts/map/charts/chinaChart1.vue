@@ -43,7 +43,7 @@ export default {
           //标题样式
           text: "ECharts 中国地图",
           x: "center",
-          textStyle: {
+          label: {
             fontSize: fontChart(18),
             color: "red",
           },
@@ -109,9 +109,7 @@ export default {
                 show: false,
                 formatter:"{b}",
                 position:'right',
-                textStyle: {
-                  color: "black",
-                }
+                color: "black",
               }
             },
             markPoint: { //图标标注 点标记
@@ -124,9 +122,7 @@ export default {
                 },
               },
               itemStyle: {
-                normal: {
-                  color: 'none'
-                },
+                color: 'none'
               },
               data: [
                 {
@@ -151,7 +147,10 @@ export default {
             },
             emphasis: {
               //是图形在高亮状态下的样式,比如在鼠标悬浮或者图例联动高亮时
-              label: { show: true },
+              label: { 
+                show: true,
+                color: '#fff'
+              },
               itemStyle: {
                 areaColor: "#f6ac13",
               },
