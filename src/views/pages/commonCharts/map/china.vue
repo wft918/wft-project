@@ -1,15 +1,18 @@
 <template>
   <div class="mapContainer">
     <div class="map">
-      <ChinaMap :id="'ChinaMap'" />
+      <ChinaMap1 :id="'ChinaMap1'" />
     </div>
-    <div class="map"></div>
+    <div class="map map2">
+      <ChinaMap2 :id="'ChinaMap2'" />
+    </div>
     <div class="map"></div>
     <div class="map"></div>
   </div>
 </template>
 <script>
-import ChinaMap from './charts/chinaChart.vue'
+import ChinaMap1 from './charts/chinaChart1.vue'
+import ChinaMap2 from './charts/chinaChart2.vue'
 export default {
   data() {
     return {
@@ -17,7 +20,8 @@ export default {
     }
   },
   components: {
-    ChinaMap
+    ChinaMap1,
+    ChinaMap2
   },
   methods:{
 
@@ -41,5 +45,8 @@ export default {
   -webkit-box-shadow:0 0 10px #0CC;
   -moz-box-shadow:0 0 10px #0CC;
   box-shadow:0 0 10px #0CC;
+}
+.map2 {
+  background: linear-gradient(to bottom , #1140ac, #0e2766, #0c2558);
 }
 </style>
