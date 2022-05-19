@@ -113,6 +113,13 @@ export default [
         children:[],
         path:'/practice/BaiduMap',
         component: () => import('@/views/pages/practice/BaiduMap/index')
+      },
+      {
+        name:'svg',
+        id:'296',
+        children:[],
+        path:'/practice/svg',
+        component: () => import('@/views/pages/practice/svg/index')
       }
     ]
   },
@@ -167,6 +174,13 @@ export default [
         children: [],
         path: '/canvas/drawPolygon',
         component: () => import('@/views/pages/canvas/drawPolygon/drawPolygon')
+      },
+      {
+        name: 'ThreeJS',
+        id: '43',
+        children: [],
+        path: '/canvas/three',
+        component: () => import('@/views/pages/canvas/threejs/index')
       }
     ]
   }
