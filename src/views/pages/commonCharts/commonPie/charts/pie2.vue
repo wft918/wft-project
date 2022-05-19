@@ -1,7 +1,5 @@
 <template>
-  <div style="width: 100%;height: 100%;">
-    <div :id="id" style="width: 100%;height:100%;"></div>
-  </div>
+  <div :id="id" style="width: 100%;height:100%;"></div>
 </template>
 <script>
   import * as echarts from 'echarts'
@@ -47,7 +45,7 @@
         this.charts = echarts.init(document.getElementById(this.id));
 
         // 指定图表的配置项和数据
-        var option = {
+        let option = {
           color: ['#414f5b', '#1890ff'],
           series: [
             {
