@@ -32,7 +32,9 @@
           <bar5 :id="'bar5'"></bar5>
         </dv-border-box-4>
       </div>
-      <div class="branch"></div>
+      <div class="branch">
+        <Bar6 :id="'Bar6'" />
+      </div>
     </div>
 
     <!-- 右边 -->
@@ -50,6 +52,7 @@
   import bar3 from './charts/bar3'
   import bar4 from './charts/bar4'
   import bar5 from './charts/bar5'
+  import Bar6 from './charts/bar6'
   export default {
     data() {
       return {
@@ -64,7 +67,8 @@
       bar2,
       bar3,
       bar4,
-      bar5
+      bar5,
+      Bar6
     },
     mounted() {
       setTimeout(() => {

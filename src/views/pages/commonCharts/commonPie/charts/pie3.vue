@@ -1,8 +1,6 @@
 <!-- 右下 -->
 <template>
-  <div style="width: 100%;height: 100%;">
-    <div :id="id" style="width: 100%;height:100%;"></div>
-  </div>
+  <div :id="id" style="width: 100%;height:100%;"></div>
 </template>
 <script>
   import * as echarts from 'echarts'
@@ -50,7 +48,7 @@
       drawPie() {
         this.charts = echarts.init(document.getElementById(this.id));
         // 指定图表的配置项和数据
-        var option = {
+        let option = {
           title: {
             text: this.title,
             textStyle: {

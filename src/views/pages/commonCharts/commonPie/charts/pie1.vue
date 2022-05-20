@@ -1,7 +1,5 @@
 <template>
-  <div style="width: 100%;height: 100%;">
-    <div :id="id" style="width: 100%;height:100%;"></div>
-  </div>
+  <div :id="id" style="width: 100%;height:100%;"></div>
 </template>
 <script>
   import { fontChart } from '@/utils/echartPxToRem'
