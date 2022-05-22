@@ -6,6 +6,7 @@ function resolve(dir) {
 }
 
 module.exports = {
+  // runtimeCompiler: true,
   publicPath: "/",
   productionSourceMap: false, // 打包时不会生成 .map 文件，加快打包速度
   chainWebpack: (config) => {
@@ -18,6 +19,11 @@ module.exports = {
       })
   },
   configureWebpack: {
+    // resolve: {
+    //   alias: {
+    //       'vue$': 'vue/dist/vue.esm.js' //内部为正则表达式  vue结尾的
+    //   }
+    // },
     plugins: [
       new CopyWebpackPlugin([
         {
