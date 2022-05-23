@@ -67,8 +67,15 @@ export default {
         let svgcanvasDom = document.getElementById("svgcanvas");
         this.allDom = svgcanvasDom.getElementsByTagName("a");
         for(let i = 0; i < this.allDom.length; i++) {
+          // console.log(this.allDom[i].childNodes,'childNodes');
           if(this.allDom[i].childNodes.length) {
-            // console.log(this.allDom[i].childNodes[0], '----->>>')
+            // 修改节点数据
+            let fontDom = this.allDom[i].getElementsByTagName("font");
+            if(fontDom.length) {
+              console.log(this.allDom[i].id,'id-->>'); // 当前节点的id,我们可以根据id获取对应节点数据并将其渲染对应的font标签上
+              fontDom[0].innerHTML = 'self'
+            }
+            //  修改图片
             if(this.allDom[i].childNodes[0].attributes['xlink:href']) {
               this.allDom[i].childNodes[0].attributes['xlink:href'].value = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAADUElEQVQ4jY2VzW8bRRiHn9kZ7/o7thPbbVGT8NUIQSDtja+ey4EiJFSJSnBBoP4LqBd6QhyQuFW5cUKCAwgu7V/AASkUVDWQFiq3gbYhdrCdxPs5M2gXg8ohZN/L7L6jffTO+/72N8JaS564dPEiFW/DdrtdavU6SZygtUUIwWg85NbNdWK7IlQuGtDvDxjbHicebfH8i08z2hmxs9UnSiyjwRa/3d1EVY6TGyiVhw0trhLMtZtIY/B3HmCMRSkH1y3ilhs4eYGN5jKIEmEUE4UxxgoMkrRlQRggC3VmWyv5gZX6C0wmitFoTBgESOkgpYu2DqPRgCSpUy6fRImvX89HXIJ31gRxWp3WIARCOBgjiKMYbRwQ5f9UuABcBu4A4XS9PM1nYW2EcJzsmFiNMSk8xqJIkj5R9MO/wDPAdeACMA+40/XCNH/m7KcPbLniY4WTkkFYtA6JIx/pCOYaksnwS5tOeRH4HKgdcNg0/8UTKy3mmVB0BUkcopSHEG7WyyOdOnNNhxs/Xctk8z5QP6SDtdunupyvHENIRWwsjhXUGm1UsUqr3UFYn+0/dzPgK3lmsuZannvpXSwGaywCSa1ts36qgkK6mrX1rQzYzQPcivZQ7hHAADod0UO7MstZqzLgFnD8MOAskp+/W8VY8zdCuVidQtJnhUkCere+z4BXgPcOAz65s8+3N69grINyXBCSKA4QQKlUJYp8fr93PwN+CLz5P1NOY/eZ69u1XuKQaloVPDy3iDapFjVuweD7Y4JQZTrsAefSjw6CpfvD3szoxsaQPwYBnaNHWXrqBJ12m0QX+KW3zY/rmwi1cOkfYV8FloFVYBOIpuvqNH/1s7fKDWPKPL44y9lXT3P65WVOLc9z8tlFqhWHMCrSfeTcBw/b153pn3FgtJsl5lplZuoVUq8pepLZRoV2q8R2E2q1x1D2ta8Om0cWH3/0DRveJ5lLR1FMQTqZF6bvUMAk9wj8a/kNtqJuQ6GAUi46FbbVGSzFeZ6H60Iw+TW/H+6Ot3GjPjMztQzq+wGJtpkGq9UyjmPZ2x/nrzC7lKymWCpQb1TRsZ8WjCckUgqSJEJYm7/CzrE3CPdb7N0fM7w7IByE6DHEg4igP8STS8wvvM1fZW5twKdzQs0AAAAASUVORK5CYII="
             }
