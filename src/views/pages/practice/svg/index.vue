@@ -23,12 +23,6 @@ export default {
       let tag = e.srcElement || e.target;
       console.log(e, '----->>>')
       console.log(currNodeId, '当前节点的id----->>>')
-      // if(tag.innerHTML) {
-      //   tag.innerHTML = 'wft'
-      // }
-      // if(tag.id) {
-      //   console.log(tag.id, '----->>>')
-      // }
     },
     //  svg 鼠标滚动事件
     window['havcZooming'] = (e) => {
