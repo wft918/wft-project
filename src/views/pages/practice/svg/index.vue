@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div id="svgTemplate" ref="svg">
-    
-    </div>
+    <div id="svgTemplate" ref="svg"></div>
   </div>
 </template>
 <script>
