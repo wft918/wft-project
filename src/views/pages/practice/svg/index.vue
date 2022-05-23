@@ -1,6 +1,8 @@
 <template>
-  <div id="svgTemplate">
+  <div>
+    <div id="svgTemplate" ref="svg">
     
+    </div>
   </div>
 </template>
 <script>
@@ -14,6 +16,9 @@ export default {
     };
   },
   created() {
+    this.getSvg();
+  },
+  mounted() {
     window['handleClick'] = function(e,currNodeId) {
       let tag = e.srcElement || e.target;
       console.log(e, '----->>>')
@@ -26,16 +31,13 @@ export default {
       // }
     }
   },
-  mounted() {
-    this.getSvg();
-  },
   methods: {
     getSvg() {
       const xhr = new XMLHttpRequest();
       xhr.open("GET", wftSvg, true);
       xhr.send();
       xhr.addEventListener("load", () => {
-        const resXML = xhr.responseXML  //  this.stringToXml(xhr.responseXML)
+        const resXML = xhr.responseXML
         this.svgDom = resXML.documentElement.cloneNode(true);
         // console.log(this.svgDom, '----->>>')
         this.svgDom.style.width = "90%";
@@ -56,7 +58,7 @@ export default {
         var oSerializer = new XMLSerializer();
         var sXML = oSerializer.serializeToString(this.svgDom);
         var Profile = Vue.extend({
-            template: "<div id='svgTemplate'>" + sXML + '</div>'
+            template: "<div>" + sXML + '</div>'
         });
         // 创建实例，并挂载到元素上
         new Profile().$mount('#svgTemplate');
@@ -85,36 +87,20 @@ export default {
           }
         }
       });
-    },
-    stringToXml(xmlString) {
-      let xmlDoc = null
-      if (typeof xmlString == "string") {
-        //FF
-        if (document.implementation.createDocument) {
-          var parser = new DOMParser();
-          xmlDoc = parser.parseFromString(xmlString, "text/xml");
-        } else if (window.ActiveXObject) {
-          xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-          xmlDoc.async = false;
-          xmlDoc.loadXML(xmlString);
-        }
-      }else {
-        xmlDoc = xmlString;
-      }
-      return xmlDoc;
     }
-  },
+  }
 };
 </script>
 <style scoped>
-#svgTemplate {
+/* #svgTemplate {
   width: 100%;
   height: 80%;
-}
+} */
 /* .svgTemplate img {
   width: 100%;
   height: 100%;
 } */
+
 </style>
 <style>
 /* .water {
