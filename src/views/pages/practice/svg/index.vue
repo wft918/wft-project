@@ -61,7 +61,7 @@ export default {
         var oSerializer = new XMLSerializer();
         var sXML = oSerializer.serializeToString(this.svgDom);
         var Profile = Vue.extend({
-            template: "<div>" + sXML + '</div>'
+            template: "<div id='svgTemplate'>" + sXML + '</div>'
         });
         // 创建实例，并挂载到元素上
         new Profile().$mount('#svgTemplate');
