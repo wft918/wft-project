@@ -5,7 +5,9 @@
       <div class="branch">
         <Line1 :id="'Line1'" />
       </div>
-      <div class="branch"></div>
+      <div class="branch">
+        <Line2 :id="'Line2'" />
+      </div>
       <div class="branch"></div>
     </div>
     <div class="cen">
@@ -22,12 +24,14 @@
 </template>
 <script>
 import Line1 from './charts/line1.vue'
+import Line2 from './charts/line2.vue'
 export default {
   data() {
     return {};
   },
   components: {
-    Line1
+    Line1,
+    Line2
   },
   mounted() {},
   methods: {},
