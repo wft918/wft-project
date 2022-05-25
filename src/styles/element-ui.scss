@@ -1,4 +1,5 @@
 .el-dropdown-menu__item {
+  color: #409EFF;
   font-size: .0625rem !important;
   line-height: .1458rem !important;
 }
@@ -75,7 +76,7 @@
 .el-menu-item
 {
   font-size: .0833rem;
-  color: #fff;
+  // color: #fff;
   padding: 0 .1042rem;
   cursor: pointer;
   height: .2917rem;
@@ -83,13 +84,13 @@
   box-sizing: border-box;
 }
 .el-submenu__title:hover {
-  background-color: rgba(5, 41, 95, 0.7);
-  color: #fcac0f;
+  background-color: rgba(5, 41, 95, 0.7)!important;
+  color: #fcac0f!important;
   // background-color: #e7a11c;
 }
 .el-menu-item:hover {
-  background-color: rgba(5, 41, 95, 0.7);
-  color: #fcac0f;
+  background-color: rgba(5, 41, 95, 0.7)!important;
+  color: #fcac0f!important;
   // background-color: #e7a11c;
 }
 /* 箭头颜色 */
@@ -103,11 +104,22 @@
 }
 // 菜单选中
 .el-menu-item.is-active {
-  color: #fcac0f!important;
+  // color: #fcac0f!important;
   background-color: rgba(5, 41, 95, 0.9)!important;
   span {
-    color: #fcac0f;
+    color: #fcac0f!important;
   }
+}
+.el-submenu__icon-arrow {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+}
+
+//  卡片
+.el-card__body {
+  padding: .1042rem;
+  background-color: rgba(5, 41, 95, 0.1)!important;
 }
 
 .tableContent {
@@ -115,29 +127,30 @@
   padding: 10px 10px;
 }
 
+//  表格
 .el-table th {
-  background-color: #013366!important;
+  background-color: transparent!important;
 }
 
 .el-table, .el-table__expanded-cell {
   background-color: transparent;
+  border: transparent!important;
 }
 
 .el-table th, .el-table tr {
   background-color: transparent;
 }
 
-.el-button-group>.el-button {
-  background: #4e6bab;
-  color: #fff;
-  border-color: #4e6bab;
+.el-table td,
+.el-table th.is-leaf {
+  border-bottom: 1px solid #0076c8;
+  border-right: none;
 }
-
-.el-input__inner {
-  background: transparent;
-  border-color: #4e6bab;
+.el-table--border,
+.el-table--group {
+  /* border: .0052rem solid #0076c8; */
+  border: none;
 }
-
 .el-table__body tr:hover > td{
   background-color:rgba(0, 229, 255, 0.3) !important;
 }
@@ -149,13 +162,53 @@
 .el-table th {
   background-color: transparent !important;
 }
-
-.el-input--mini .el-input__inner {
+.el-table .cell {
+  background-color: transparent;
+  color: #74a5c9;
+}
+.el-table--border::after {
+  background-color: transparent!important;
+}
+// .el-table--striped,
+// .el-table__body tr,
+// .el-table__row--striped td,
+// .el-table--striped .el-table__body tr.el-table__row--striped td {
+//   background-color: transparent;
+// }
+.el-table--striped .el-table__body tr.el-table__row--striped td {
+  background: transparent;
+}
+//  最下面儿的白线
+.el-table--border::after, .el-table--group::after, .el-table::before {
   background: transparent;
 }
 
+.el-button-group>.el-button {
+  background: #4e6bab;
+  color: #fff;
+  border-color: #4e6bab;
+}
+
 .el-input__inner {
-  border: 1px solid #1c487a;
+  background: transparent;
+  border-color: #4e6bab;
+  color: #c0c4cc;
+}
+//  禁用
+.el-textarea.is-disabled .el-textarea__inner,
+.el-input.is-disabled .el-input__inner {
+  background-color: rgba(16, 43, 121, .7);
+  border-color: #4e6bab;
+}
+.avue--view .el-input.is-disabled .el-input__inner,
+.avue--view .el-textarea.is-disabled .el-textarea__inner {
+  background-color: #091f5f;
+}
+
+
+
+.el-input--mini .el-input__inner {
+  background: transparent;
 }
 
 .el-range-editor.el-input__inner {
@@ -174,10 +227,7 @@
   border-color: #4e6bab;
 }
 
-.el-table .cell {
-  background-color: transparent;
-  color: #74a5c9;
-}
+
 .el-tree {
   background: transparent;
   color: #a6cfc9;
@@ -186,6 +236,14 @@
 
 .el-tree-node:focus>.el-tree-node__content {
   color: #000!important;
+}
+//  移入树形
+.el-tree-node__content:hover {
+  background-color: #00b0ff !important;
+}
+// 选中当前node的样式
+.el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content {
+  background-color: #0079ff;
 }
 //  标签页
 .el-tabs--card > .el-tabs__header .el-tabs__nav {
@@ -269,16 +327,16 @@
   height: 100%!important;
 }
 .el-scrollbar{
-// background: #174B6C;
-background: #102b79;
-border: none;
-li{
-  color: #a6cfc9
-}
+  // background: #174B6C;
+  background: #102b79;
+  border: none;
+  li{
+    color: #a6cfc9
+  }
 }
 // 下拉框去掉白色边框
 .el-select-dropdown{
-border: none;
+  border: none;
 }
 // 移入下拉框
 .el-select-dropdown__item.hover, .el-select-dropdown__item:hover{
@@ -287,3 +345,99 @@ border: none;
   color: #fff;
 }
 
+.el-form-item__label {
+  color: #67a9d4;
+  font-size: .0729rem!important;
+}
+
+// 分页
+.el-pager li {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #1c487a;
+  margin: 0 .026rem;
+  border-radius: 4px;
+}
+.el-pagination .btn-prev,
+.el-pagination .btn-next {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #1c487a;
+  border-radius: 4px;
+}
+
+.el-pagination button:disabled {
+  background-color: #004b85;
+}
+.el-pagination__total,
+.el-pagination__sizes .el-input .el-input__inner,
+.el-pagination__editor.el-input .el-input__inner,
+.el-pagination span:not([class*=suffix]),
+.el-pager li.btn-quickprev,
+.el-pager li.btn-quicknext, .el-pager li.btn-quickprev {
+  color: #fff;
+}
+
+//  抽屉
+.el-drawer {
+  background: #013366;
+}
+
+.el-drawer__header {
+  color: #fff;
+}
+.avue-dialog .el-dialog__title, 
+.avue-dialog .el-drawer__header,
+.el-drawer__header {
+  color: #fff;
+}
+
+// el - transfer - panel
+.el-transfer-panel {
+  border: 1px solid #1c487a;
+  background: transparent;
+}
+.el-transfer-panel .el-transfer-panel__header {
+  background: transparent;
+  border-bottom: 1px solid #1c487a;
+}
+.el-transfer-panel .el-transfer-panel__header .el-checkbox .el-checkbox__label {
+  color: #fff;
+}
+.el-transfer-panel__item.el-checkbox .el-checkbox__label {
+  color: #a6cfc9;
+}
+.avue-dialog .el-drawer__header {
+  border-bottom: 1px solid #155bbc;
+}
+
+// 下拉菜单相关
+.el-dropdown-menu {
+  background: #102b79;
+  border: 1px solid #1c487a;
+}
+.el-dropdown-menu__item--divided {
+  border-top: 1px solid #1c487a;
+}
+.el-dropdown-menu__item--divided:hover {
+  background-color: #0076f6!important;
+}
+
+
+//  框架 样式 - 覆盖
+.el-collapse-item__wrap {
+  background: transparent!important;
+  border: transparent!important;
+}
+
+.el-collapse-item__header {
+  background: transparent!important;
+}
+.avue-group .el-collapse, .avue-group .el-collapse-item__wrap {
+  border-color: transparent!important;
+  // border-bottom-color: #0076c8!important;
+}
+
+// .avue-crud .el-input--small input, .avue-form .el-input--small input {
+//   border-color: #4e6bab;
+// }
