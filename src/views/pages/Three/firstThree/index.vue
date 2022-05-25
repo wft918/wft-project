@@ -40,7 +40,7 @@ export default {
   },
   mounted() {
     this.init()
-    console.log(ThreeBSP, '----->>>')
+    // console.log(ThreeBSP, 'ThreeBSP----->>>')
   },
   destroyed() {
     this.renderer.domElement.removeEventListener('click', this.modelMouseClick, false)
@@ -64,18 +64,17 @@ export default {
       this.scene = new THREE.Scene();
       // 1.2 相机
       this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
-      // 1.3 渲染器
-      this.renderer = new THREE.WebGLRenderer({ antialias: true });
-      // 创建纹理加载器
-      this.textureLoader = new THREE.TextureLoader();
-      // 
-      this.groupBox = new THREE.Group();
-      // 设置相机
       // 设置摄像机位置,相机方向逆X轴方向，倾斜向下看
       this.camera.position.set(360, 360, 360);
       //this.camera.position.set(-20, 40 ,30)
       // 指向场景中心
       this.camera.lookAt(this.scene.position);
+      // 1.3 渲染器
+      this.renderer = new THREE.WebGLRenderer({ antialias: true });
+      // 创建纹理加载器
+      this.textureLoader = new THREE.TextureLoader();
+      // 创建一个组合对象
+      this.groupBox = new THREE.Group();
       // 添加坐标轴，辅助判断位置
       let axes = new THREE.AxesHelper(1000);
       this.scene.add(axes);
@@ -96,13 +95,13 @@ export default {
       let ambient = new THREE.AmbientLight(0x999999);
       this.scene.add(ambient);
 
-      //创建性能检测
+      //创建性能监测
       this.stats = new Stats()
       this.stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
       this.stats.domElement.style.position = 'absolute'; //绝对坐标  
       this.stats.domElement.style.left = '0px';// (0,0)px,左上角  
       this.stats.domElement.style.top = '0px';
-      $('#stats').appendChild(this.stats.dom)
+      $('#stats').appendChild(this.stats.domElement)
 
       // 渲染div到canvas
       $('#container').appendChild(this.renderer.domElement);
@@ -135,6 +134,7 @@ export default {
       // 最后进行渲染
       this.render()
     },
+    // 最后的渲染
     render() {
       let animate = () => {
         //循环调用函数
@@ -152,8 +152,6 @@ export default {
     },
     // 创建材质
     createMaterial() {
-      // 创建一个集合体
-      let geometry = new THREE.BoxGeometry(439 + 2 + 2, 120, 376.5 + 2 + 2);
       // 创建三维用到的材质
       /**
        * 
@@ -172,9 +170,10 @@ export default {
        */
       // 外墙
       let wallMaterial = new THREE.MeshLambertMaterial({ color: 0x00ffff });
-      let wallGeo = new THREE.BoxGeometry(439 + 2 + 2, 120, 376.5 + 2 + 2);
+      let wallGeo = new THREE.BoxGeometry(439 + 2 + 2, 120, 376.5 + 2 + 2); // 创建几何体
       let wallMesh = new THREE.Mesh(wallGeo, wallMaterial);
       wallMesh.position.set(0, 60, 0); //(0, 60, -14.95);
+      this.scene.add(wallMesh)
       // 内墙
       let wallInnerMaterial = new THREE.MeshLambertMaterial({
         color: 0x2d1bff,
@@ -182,10 +181,10 @@ export default {
       let wallInnerGeo = new THREE.BoxGeometry(439, 120, 376.5); //(270, 120, 390);
       let wallInnerMesh = new THREE.Mesh(wallInnerGeo, wallInnerMaterial);
       wallInnerMesh.position.set(0, 60, 0); //(0, 60, -14.95);
-
+      this.scene.add(wallInnerMesh)
       // 门
       let doorTexture = this.textureLoader.load(
-        // require("../../../../assets/img/door_left.png") // 暂时注掉
+        require("../../../../assets/img/1.png") // 暂时注掉
       );
       let boxTextureMaterial = new THREE.MeshStandardMaterial({
         map: doorTexture,
@@ -197,8 +196,59 @@ export default {
       let doorGeo = new THREE.BoxGeometry(2, 80, 74.5);
       let doorMesh = new THREE.Mesh(doorGeo, boxTextureMaterial);
       doorMesh.position.set(-220.5, 40, 0);
-      //this.scene.add(doorMesh);
+      this.scene.add(doorMesh);
 
+      /**
+       *  threeBSP - 引用还有问题
+       */
+      // //转BSP
+      // let wallBSP = new ThreeBSP(wallMesh);
+      // let wallInnerBSP = new ThreeBSP(wallInnerMesh);
+      // let doorBSP = new ThreeBSP(doorMesh);
+      // // let window1BSP = new ThreeBSP(this.createWindowRight());
+      // //let window2BSP = new ThreeBSP(this.createWindowRight());// createWindowLeft
+      // let wallResultBSP = wallBSP.subtract(wallInnerBSP);
+      // wallResultBSP = wallResultBSP.subtract(doorBSP);
+      // // wallResultBSP = wallResultBSP.subtract(window1BSP);
+      // //wallResultBSP = wallResultBSP.subtract(window2BSP);
+      // let wallResultMesh = wallResultBSP.toMesh();
+
+      // //转换后的Mesh配置属性
+      // let wallTexture = this.textureLoader.load(require("../../../../assets/img/3.jpg")); // 暂时注掉
+      // let wallTextureMaterial = new THREE.MeshStandardMaterial({
+      //   map: wallTexture,
+      //   metalness: 0.2,
+      //   roughness: 0.07,
+      //   side: THREE.DoubleSide,
+      // });
+      // let wallInnerTexture = this.textureLoader.load(
+      //   require("../../../../assets/img/6.jpg") // 暂时注掉
+      // );
+      // let wallInnerTextureMaterial = new THREE.MeshStandardMaterial({
+      //   map: wallInnerTexture,
+      //   metalness: 0.2,
+      //   roughness: 0.07,
+      //   side: THREE.DoubleSide,
+      // });
+      // let wallResultMeshMaterial = [];
+      // wallResultMeshMaterial.push(wallTextureMaterial);
+      // wallResultMeshMaterial.push(wallInnerTextureMaterial);
+      // //wallResultMeshMaterial.push(boxTextureMaterial);
+      // wallResultMesh.material = wallResultMeshMaterial;
+
+      // // console.log(wallResultMesh.geometry.faces, 112233);
+      // wallResultMesh.geometry.faces.forEach((item, i) => {
+      //   if (i < 160) {
+      //     item.materialIndex = 0;
+      //   } else {
+      //     item.materialIndex = 1;
+      //   }
+      // });
+
+      // wallResultMesh.geometry.computeFaceNormals();
+      // wallResultMesh.geometry.computeVertexNormals();
+      // //添加结果到场景中
+      // this.scene.add(wallResultMesh);
     },
     // 加载 GLTF 模型
     loadGlbModel() {
@@ -271,6 +321,7 @@ export default {
       mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
       raycaster.setFromCamera(mouse, this.camera);
       const intersects = raycaster.intersectObjects(this.scene.children);
+      // 根据它来判断点击的什么，length为0即没有点击到模型
       console.log(intersects, 'intersects----->>>')
     }
   }
