@@ -183,5 +183,18 @@ export default [
         component: () => import('@/views/pages/canvas/threejs/index')
       }
     ]
+  },
+  {
+    name: 'Three',
+    id: '5',
+    children: [
+      {
+        name: 'Three1',
+        id: '51',
+        children: [],
+        path: '/Three/firstThree',
+        component: () => import('@/views/pages/Three/firstThree/index')
+      }
+    ]
   }
 ]
