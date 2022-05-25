@@ -8,6 +8,7 @@
 </template>
 
 <script>
+// import '@/utils/ThreeBSP.js' // 不可以这么引
 import * as THREE from 'three'
 import * as Stats from 'stats.js'
 // import * as dat from 'dat.gui'
@@ -15,7 +16,6 @@ import OrbitControls from 'three-orbitcontrols'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js'
-
 const $ = name => document.querySelector(name)
 
 export default {
@@ -40,6 +40,7 @@ export default {
   },
   mounted() {
     this.init()
+    console.log(ThreeBSP, '----->>>')
   },
   destroyed() {
     this.renderer.domElement.removeEventListener('click', this.modelMouseClick, false)
@@ -127,8 +128,77 @@ export default {
       this.control.minPolarAngle = 0.0;
       // 是否可以旋转
       this.enableRotate = true;
-      this.loadGlbModel();
-      // this.loadFbxModel()
+      this.loadGlbModel(); // 加载 glb、gltf模型
+      // this.loadFbxModel() // 加载 FBX 模型
+      // this.loadJsonModel() // 加载 json 模型
+      // this.createMaterial() // 创建材质
+      // 最后进行渲染
+      this.render()
+    },
+    render() {
+      let animate = () => {
+        //循环调用函数
+        requestAnimationFrame(animate)
+        //更新相机控件
+        this.control.update()
+        // 更新性能插件
+        this.stats.update()
+        //渲染界面
+        this.renderer.render(this.scene, this.camera)
+      }
+      animate()
+      //  为模型绑定点击事件
+      this.renderer.domElement.addEventListener('click', this.modelMouseClick, false)
+    },
+    // 创建材质
+    createMaterial() {
+      // 创建一个集合体
+      let geometry = new THREE.BoxGeometry(439 + 2 + 2, 120, 376.5 + 2 + 2);
+      // 创建三维用到的材质
+      /**
+       * 
+       * MeshBasicMaterial: 网格基础材质
+       * MeshDepthMaterial: 网格深度材质
+       * MeshNormalMaterial: 网格法向材质
+       * MeshLambertMaterial: 网格Lambert 材质
+       * MeshPhongMaterial: 网格 Phong式材质
+       * MeshStandardMaterial: 网格标准材质
+       * MeshPhysicalMaterial: 网格物理材质
+       * MeshToonMaterial: 网格卡通材质
+       * ShadowMaterial: 阴影材质
+       * ShaderMaterial: 着色器材质
+       * LineBasicMaterial: 直线基础材质
+       * LineDashMaterial: 虚线材质
+       */
+      // 外墙
+      let wallMaterial = new THREE.MeshLambertMaterial({ color: 0x00ffff });
+      let wallGeo = new THREE.BoxGeometry(439 + 2 + 2, 120, 376.5 + 2 + 2);
+      let wallMesh = new THREE.Mesh(wallGeo, wallMaterial);
+      wallMesh.position.set(0, 60, 0); //(0, 60, -14.95);
+      // 内墙
+      let wallInnerMaterial = new THREE.MeshLambertMaterial({
+        color: 0x2d1bff,
+      });
+      let wallInnerGeo = new THREE.BoxGeometry(439, 120, 376.5); //(270, 120, 390);
+      let wallInnerMesh = new THREE.Mesh(wallInnerGeo, wallInnerMaterial);
+      wallInnerMesh.position.set(0, 60, 0); //(0, 60, -14.95);
+
+      // 门
+      let doorTexture = this.textureLoader.load(
+        // require("../../../../assets/img/door_left.png") // 暂时注掉
+      );
+      let boxTextureMaterial = new THREE.MeshStandardMaterial({
+        map: doorTexture,
+        metalness: 0.2,
+        roughness: 0.07,
+        side: THREE.DoubleSide,
+      });
+      //let doorInnerMaterial = new THREE.MeshLambertMaterial({color: 0x2D1BFF});
+      let doorGeo = new THREE.BoxGeometry(2, 80, 74.5);
+      let doorMesh = new THREE.Mesh(doorGeo, boxTextureMaterial);
+      doorMesh.position.set(-220.5, 40, 0);
+      //this.scene.add(doorMesh);
+
     },
     // 加载 GLTF 模型
     loadGlbModel() {
@@ -154,19 +224,6 @@ export default {
       }, (error) => {
           console.error(error)
       })
-      let animate = () => {
-        //循环调用函数
-        requestAnimationFrame(animate)
-        //更新相机控件
-        this.control.update()
-        // 更新性能插件
-        this.stats.update()
-        //渲染界面
-        this.renderer.render(this.scene, this.camera)
-      }
-      animate()
-      //  为模型绑定点击事件
-      this.renderer.domElement.addEventListener('click', this.modelMouseClick, false)
     },
     //  加载 FBX 模型
     loadFbxModel() {
@@ -181,17 +238,6 @@ export default {
         });
         this.scene.add(object);//模型
       })
-      let animate = () => {
-        //循环调用函数
-        requestAnimationFrame(animate)
-        //更新相机控件
-        this.control.update()
-        // 更新性能插件
-        this.stats.update()
-        //渲染界面
-        this.renderer.render(this.scene, this.camera)
-      }
-      animate()
     },
     //加载 JSON格式 模型
     loadJsonModel() {
@@ -215,17 +261,6 @@ export default {
         // called when loading has errors
         console.error('An error happened', error);
       })
-      let animate = () => {
-        //循环调用函数
-        requestAnimationFrame(animate)
-        //更新相机控件
-        this.control.update()
-        // 更新性能插件
-        this.stats.update()
-        //渲染界面
-        this.renderer.render(this.scene, this.camera)
-      }
-      animate()
     },
     // 模型的点击事件
     modelMouseClick( event ) {
