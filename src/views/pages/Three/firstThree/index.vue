@@ -39,6 +39,20 @@
     mounted() {
       this.init()
     },
+    destroyed() {
+      this.renderer.domElement.removeEventListener('click', this.modelMouseClick, false)
+      this.scene = null, // 场景
+      this.camera = null, // 照相机
+      this.renderer = null, // 渲染器
+      this.mesh = null, // 网格
+      this.textureLoader = null, // 纹理加载器
+      this.mixer = null,
+      this.groupBox = null,
+      this.control = null, // 相机控件
+      this.publicPath = process.env.BASE_URL,
+      this.timer = null,
+      this.clock = null
+    },
     methods: {
       //初始化
       init() {
@@ -60,7 +74,7 @@
         this.camera.lookAt(this.scene.position);
         // 添加坐标轴，辅助判断位置
         let axes = new THREE.AxesHelper(1000);
-        // this.scene.add(axes);
+        this.scene.add(axes);
         // 设置环境
         this.renderer.setClearColor(new THREE.Color("#f1f9fb"));
         // 设置场景大小
@@ -77,6 +91,14 @@
         // 环境光
         let ambient = new THREE.AmbientLight(0x999999);
         this.scene.add(ambient);
+
+        //创建性能检测
+        let stats = new Stats()
+        stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
+        stats.domElement.style.position = 'absolute'; //绝对坐标  
+        stats.domElement.style.left = '0px';// (0,0)px,左上角  
+        stats.domElement.style.top = '0px';
+        $('#stats').appendChild(stats.domElement)
 
         // 渲染div到canvas
         $('#container').appendChild(this.renderer.domElement);
@@ -138,6 +160,8 @@
           this.renderer.render(this.scene, this.camera)
         }
         animate()
+        //  为模型绑定点击事件
+        this.renderer.domElement.addEventListener('click', this.modelMouseClick, false)
       },
       //  加载 FBX 模型
       loadFbxModel() {
@@ -161,6 +185,16 @@
           this.renderer.render(this.scene, this.camera)
         }
         animate()
+      },
+      modelMouseClick( event ) {
+        var raycaster = new THREE.Raycaster();
+        var mouse = new THREE.Vector2();
+        // 将鼠标位置归一化为设备坐标。x 和 y 方向的取值范围是 (-1 to +1)
+        mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+        mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+        raycaster.setFromCamera(mouse, this.camera);
+        const intersects = raycaster.intersectObjects(this.scene.children);
+        console.log(intersects, 'intersects----->>>')
       }
     }
   }
@@ -173,6 +207,7 @@
 #stats {
   width: 100%;
   height: 50px;
+  position: relative;
 }
 #container {
   width: 100%;
