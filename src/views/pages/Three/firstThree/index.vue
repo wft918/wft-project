@@ -16,6 +16,8 @@ import OrbitControls from 'three-orbitcontrols'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js'
+const ThreeBSP = require('three-js-csg')(THREE)
+
 const $ = name => document.querySelector(name)
 
 export default {
@@ -40,7 +42,6 @@ export default {
   },
   mounted() {
     this.init()
-    // console.log(ThreeBSP, 'ThreeBSP----->>>')
   },
   destroyed() {
     this.renderer.domElement.removeEventListener('click', this.modelMouseClick, false)
@@ -130,7 +131,7 @@ export default {
       this.loadGlbModel(); // 加载 glb、gltf模型
       // this.loadFbxModel() // 加载 FBX 模型
       // this.loadJsonModel() // 加载 json 模型
-      // this.createMaterial() // 创建材质
+      this.createMaterial() // 创建材质
       // 最后进行渲染
       this.render()
     },
@@ -173,7 +174,7 @@ export default {
       let wallGeo = new THREE.BoxGeometry(439 + 2 + 2, 120, 376.5 + 2 + 2); // 创建几何体
       let wallMesh = new THREE.Mesh(wallGeo, wallMaterial);
       wallMesh.position.set(0, 60, 0); //(0, 60, -14.95);
-      this.scene.add(wallMesh)
+      // this.scene.add(wallMesh)
       // 内墙
       let wallInnerMaterial = new THREE.MeshLambertMaterial({
         color: 0x2d1bff,
@@ -181,7 +182,7 @@ export default {
       let wallInnerGeo = new THREE.BoxGeometry(439, 120, 376.5); //(270, 120, 390);
       let wallInnerMesh = new THREE.Mesh(wallInnerGeo, wallInnerMaterial);
       wallInnerMesh.position.set(0, 60, 0); //(0, 60, -14.95);
-      this.scene.add(wallInnerMesh)
+      // this.scene.add(wallInnerMesh)
       // 门
       let doorTexture = this.textureLoader.load(
         require("../../../../assets/img/1.png") // 暂时注掉
@@ -196,59 +197,60 @@ export default {
       let doorGeo = new THREE.BoxGeometry(2, 80, 74.5);
       let doorMesh = new THREE.Mesh(doorGeo, boxTextureMaterial);
       doorMesh.position.set(-220.5, 40, 0);
-      this.scene.add(doorMesh);
+      // this.scene.add(doorMesh);
 
       /**
        *  threeBSP - 引用还有问题
        */
-      // //转BSP
-      // let wallBSP = new ThreeBSP(wallMesh);
-      // let wallInnerBSP = new ThreeBSP(wallInnerMesh);
-      // let doorBSP = new ThreeBSP(doorMesh);
-      // // let window1BSP = new ThreeBSP(this.createWindowRight());
-      // //let window2BSP = new ThreeBSP(this.createWindowRight());// createWindowLeft
-      // let wallResultBSP = wallBSP.subtract(wallInnerBSP);
-      // wallResultBSP = wallResultBSP.subtract(doorBSP);
-      // // wallResultBSP = wallResultBSP.subtract(window1BSP);
-      // //wallResultBSP = wallResultBSP.subtract(window2BSP);
-      // let wallResultMesh = wallResultBSP.toMesh();
+      //转BSP
+      let wallBSP = new ThreeBSP(wallMesh);
+      let wallInnerBSP = new ThreeBSP(wallInnerMesh);
+      let doorBSP = new ThreeBSP(doorMesh);
+      // let window1BSP = new ThreeBSP(this.createWindowRight());
+      //let window2BSP = new ThreeBSP(this.createWindowRight());// createWindowLeft
+      let wallResultBSP = wallBSP.subtract(wallInnerBSP);
+      wallResultBSP = wallResultBSP.subtract(doorBSP);
+      // wallResultBSP = wallResultBSP.subtract(window1BSP);
+      //wallResultBSP = wallResultBSP.subtract(window2BSP);
+      let wallResultMesh = wallResultBSP.toMesh();
 
-      // //转换后的Mesh配置属性
-      // let wallTexture = this.textureLoader.load(require("../../../../assets/img/3.jpg")); // 暂时注掉
-      // let wallTextureMaterial = new THREE.MeshStandardMaterial({
-      //   map: wallTexture,
-      //   metalness: 0.2,
-      //   roughness: 0.07,
-      //   side: THREE.DoubleSide,
-      // });
-      // let wallInnerTexture = this.textureLoader.load(
-      //   require("../../../../assets/img/6.jpg") // 暂时注掉
-      // );
-      // let wallInnerTextureMaterial = new THREE.MeshStandardMaterial({
-      //   map: wallInnerTexture,
-      //   metalness: 0.2,
-      //   roughness: 0.07,
-      //   side: THREE.DoubleSide,
-      // });
-      // let wallResultMeshMaterial = [];
-      // wallResultMeshMaterial.push(wallTextureMaterial);
-      // wallResultMeshMaterial.push(wallInnerTextureMaterial);
-      // //wallResultMeshMaterial.push(boxTextureMaterial);
-      // wallResultMesh.material = wallResultMeshMaterial;
+      //转换后的Mesh配置属性
+      let wallTexture = this.textureLoader.load(require("../../../../assets/img/3.jpg")); // 暂时注掉
+      let wallTextureMaterial = new THREE.MeshStandardMaterial({
+        map: wallTexture,
+        metalness: 0.2,
+        roughness: 0.07,
+        side: THREE.DoubleSide,
+      });
+      let wallInnerTexture = this.textureLoader.load(
+        require("../../../../assets/img/6.jpg") // 暂时注掉
+      );
+      let wallInnerTextureMaterial = new THREE.MeshStandardMaterial({
+        map: wallInnerTexture,
+        metalness: 0.2,
+        roughness: 0.07,
+        side: THREE.DoubleSide,
+      });
+      let wallResultMeshMaterial = [];
+      wallResultMeshMaterial.push(wallTextureMaterial);
+      wallResultMeshMaterial.push(wallInnerTextureMaterial);
+      //wallResultMeshMaterial.push(boxTextureMaterial);
+      wallResultMesh.material = wallResultMeshMaterial;
 
-      // // console.log(wallResultMesh.geometry.faces, 112233);
-      // wallResultMesh.geometry.faces.forEach((item, i) => {
-      //   if (i < 160) {
-      //     item.materialIndex = 0;
-      //   } else {
-      //     item.materialIndex = 1;
-      //   }
-      // });
+      // console.log(wallResultMesh.geometry.faces, 112233);
+      wallResultMesh.geometry.faces.forEach((item, i) => {
+        if (i < 160) {
+          item.materialIndex = 0;
+        } else {
+          item.materialIndex = 1;
+        }
+      });
 
-      // wallResultMesh.geometry.computeFaceNormals();
-      // wallResultMesh.geometry.computeVertexNormals();
-      // //添加结果到场景中
-      // this.scene.add(wallResultMesh);
+      wallResultMesh.geometry.computeFaceNormals();
+      wallResultMesh.geometry.computeVertexNormals();
+      // console.log(wallResultMesh, '----->>>')
+      //添加结果到场景中
+      this.scene.add(wallResultMesh);
     },
     // 加载 GLTF 模型
     loadGlbModel() {
