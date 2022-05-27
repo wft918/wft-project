@@ -33,7 +33,7 @@ export default {
       stats: null, // 性能监测
       control: null, // 相机控件
       publicPath: process.env.BASE_URL,
-      timer: null,
+      clearAnim: null,
       clock: null
     }
   },
@@ -44,6 +44,7 @@ export default {
     this.init()
   },
   destroyed() {
+    cancelAnimationFrame(this.clearAnim)  // 清楚requestAnimationFrame
     this.renderer.domElement.removeEventListener('click', this.modelMouseClick, false)
     this.scene = null, // 场景
     this.camera = null, // 照相机
@@ -55,7 +56,6 @@ export default {
     this.stats = null, // 性能监测
     this.control = null, // 相机控件
     this.publicPath = process.env.BASE_URL,
-    this.timer = null,
     this.clock = null
   },
   methods: {
@@ -139,7 +139,7 @@ export default {
     render() {
       let animate = () => {
         //循环调用函数
-        requestAnimationFrame(animate)
+        this.clearAnim = requestAnimationFrame(animate)
         //更新相机控件
         this.control.update()
         // 更新性能插件
