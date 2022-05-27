@@ -262,7 +262,7 @@ export default {
       loader.load(`${this.publicPath}model/12OJJ6MOWT722N61Z5N92KA9C.glb`, (gltf) => {
         console.log(gltf, 'gltf----->>>')
         gltf.scene.scale.set(100,100,100)  //  设置模型大小缩放
-        gltf.scene.position.set(0,0,0)
+        gltf.scene.position.set(0,60,0)
         let axis = new THREE.Vector3(0,1,0);//向量axis
         gltf.scene.rotateOnAxis(axis,Math.PI/2);
         //绕axis轴逆旋转π/16
