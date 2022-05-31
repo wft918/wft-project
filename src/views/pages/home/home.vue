@@ -7,7 +7,7 @@
 export default {
   data() {
     return {
-      msg: '7212'
+      msg: '60'
     }
   },
   mounted(){
@@ -17,9 +17,10 @@ export default {
 </script>
 <style scoped>
 .name {
-  font-size: 27px;
+  font-size: 37px;
   color: #007acc;
   font-weight: 600;
-  font-family: 'SHOUTING';
+  font-family: 'Trendy';
+  font-style:italic;
 }
 </style>
