@@ -20,6 +20,6 @@ export default {
   font-size: 27px;
   color: #007acc;
   font-weight: 600;
-  font-family: 'YJSZ';
+  font-family: 'SHOUTING';
 }
 </style>
