@@ -18,7 +18,9 @@
       <div>
         <Pie4 :id="'Pie4'" />
       </div>
-      <div></div>
+      <div>
+        <Pie5 :id="'Pie5'" />
+      </div>
     </div>
     <div>
       <div></div>
@@ -28,19 +30,20 @@
   </div>
 </template>
 <script>
-  import pie1 from './charts/pie1'
-  import pie2 from './charts/pie2'
-  import pie3 from './charts/pie3'
-  import Gauge from './charts/gauge'
-  import Pie4 from './charts/pie4.vue'
-  export default {
-    data() {
-      return {
+import pie1 from './charts/pie1'
+import pie2 from './charts/pie2'
+import pie3 from './charts/pie3'
+import Gauge from './charts/gauge'
+import Pie4 from './charts/pie4.vue'
+import Pie5 from './charts/pie5.vue'
+export default {
+  data() {
+    return {
 
-      }
-    },
-    components: { pie1, pie2, pie3, Gauge, Pie4 }
-  }
+    }
+  },
+  components: { pie1, pie2, pie3, Gauge, Pie4, Pie5 }
+}
 </script>
 <style scoped>
   .commonPie {
