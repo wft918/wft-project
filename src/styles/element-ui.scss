@@ -71,6 +71,18 @@
   color: #fff!important;
 }
 
+// 级联
+.el-cascader__dropdown {
+  border: 1px solid #409EFF;
+}
+.el-cascader-node:hover {
+  background-color: #0076f6!important;
+}
+.el-cascader-node.is-active {
+  font-weight: 600;
+  background-color: rgba(5, 41, 95, 0.9);
+}
+
 // 导航菜单
 .el-submenu__title,
 .el-menu-item
@@ -84,12 +96,12 @@
   box-sizing: border-box;
 }
 .el-submenu__title:hover {
-  background-color: rgba(5, 41, 95, 0.7)!important;
+  background-color: rgba(16, 43, 121, 0.4)!important;
   color: #fcac0f!important;
   // background-color: #e7a11c;
 }
 .el-menu-item:hover {
-  background-color: rgba(5, 41, 95, 0.7)!important;
+  background-color: rgba(16, 43, 121, 0.4)!important;
   color: #fcac0f!important;
   // background-color: #e7a11c;
 }
@@ -105,7 +117,7 @@
 // 菜单选中
 .el-menu-item.is-active {
   // color: #fcac0f!important;
-  background-color: rgba(5, 41, 95, 0.9)!important;
+  background-color: rgba(16, 43, 121, 0.6)!important;
   span {
     color: #fcac0f!important;
   }
@@ -151,12 +163,20 @@
   /* border: .0052rem solid #0076c8; */
   border: none;
 }
-.el-table__body tr:hover > td{
-  background-color:rgba(0, 229, 255, 0.3) !important;
-}
+// .el-table__body tr:hover > td{
+//   background-color:rgba(0, 229, 255, 0.3) !important;
+// }
 
-.el-table--enable-row-hover .el-table__body tr:hover > td {
-  background-color: rgba(0, 229, 255, 0.3) !important;
+// .el-table--enable-row-hover .el-table__body tr:hover > td {
+//   background-color: rgba(0, 229, 255, 0.3) !important;
+// }
+
+// .el-table__body tr.hover-row>td {
+//   background-color: rgba(0, 229, 255, 0.3) !important;
+// }
+// 固定在右侧下方的白线
+.el-table__fixed-right::before, .el-table__fixed::before {
+  background: transparent;
 }
 
 .el-table th {
@@ -164,7 +184,11 @@
 }
 .el-table .cell {
   background-color: transparent;
-  color: #74a5c9;
+  color: #fff;
+  // color: #74a5c9;
+}
+.el-table__expand-icon {
+  color: #fff;
 }
 .el-table--border::after {
   background-color: transparent!important;
@@ -244,6 +268,9 @@
 // 选中当前node的样式
 .el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content {
   background-color: #0079ff;
+}
+.el-tree-node__label {
+  color: #fff;
 }
 //  标签页
 .el-tabs--card > .el-tabs__header .el-tabs__nav {
@@ -329,14 +356,18 @@
 .el-scrollbar{
   // background: #174B6C;
   background: #102b79;
-  border: none;
+  // background-color: rgba(16, 43, 121, .7);
+  // border: none;
+  border: 1px solid #409EFF;
+  // border-radius: .0521rem;
   li{
     color: #a6cfc9
   }
 }
 // 下拉框去掉白色边框
 .el-select-dropdown{
-  border: none;
+  // border: none;
+  border: 1px solid #409EFF;
 }
 // 移入下拉框
 .el-select-dropdown__item.hover, .el-select-dropdown__item:hover{
@@ -423,6 +454,20 @@
   background-color: #0076f6!important;
 }
 
+//  Loading - 加载
+.el-loading-mask {
+  background-color: transparent!important;
+}
+//  spinner - 颜色  还不确定神马颜色 - 暂时注掉
+// .el-loading-spinner .path {
+//   stroke: #b2b14a;
+// }
+
+// Popover 弹出框
+.el-popover {
+  padding: 0;
+}
+
 
 //  框架 样式 - 覆盖
 .el-collapse-item__wrap {
@@ -441,3 +486,15 @@
 // .avue-crud .el-input--small input, .avue-form .el-input--small input {
 //   border-color: #4e6bab;
 // }
+
+//Edit By Fang 由于Avue表格中使用fixed  以下两个样式配合使用
+// 表格中使用fixed  通过以下样式设定
+.el-table__body .el-table__row.hover-row td {
+  background: transparent;
+}
+
+// 表格中没用fixed  通过以下样式设定
+.el-table tbody tr:hover>td {
+  background: rgba(0, 229, 255, 0.3) !important;
+}
+// end
