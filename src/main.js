@@ -15,6 +15,10 @@ import dataV from '@jiaminghi/data-view'
 import './directive'
 import fullscreen from 'vue-fullscreen'
 import BaiduMap from 'vue-baidu-map'
+import highcharts from 'highcharts'
+import highcharts3d from 'highcharts/highcharts-3d'
+ 
+highcharts3d(highcharts)
 
 
 // 可拖拽缩放组件全局注册 -- VueDraggableResizable

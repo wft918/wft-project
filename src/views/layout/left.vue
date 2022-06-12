@@ -1,7 +1,7 @@
 <template>
   <div style="width: 100%;height: 100%;background-color: #4891f7;overflow: auto;">
     <el-menu class="el-menu-vertical-demo" background-color="#4891f7" text-color="#fff" active-text-color="#fff" :default-active="'11'" :unique-opened="true">
-      <sub-menu v-for="(menu,index) in menuList" :key="menu.id" :menu="menu"></sub-menu>
+      <sub-menu v-for="menu in menuList" :key="menu.id" :menu="menu"></sub-menu>
     </el-menu>
   </div>
 </template>
