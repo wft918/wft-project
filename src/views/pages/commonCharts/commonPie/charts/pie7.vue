@@ -2,7 +2,7 @@
   <div :id="id" style="height: 100%; width: 100%"></div>
 </template>
 <script>
-import HighCharts from "highcharts";
+import highcharts from "highcharts";
 import { fontChart } from "@/utils/echartPxToRem";
 export default {
   props: {
@@ -41,6 +41,21 @@ export default {
   methods: {
     initOption() {
       let option = {
+        // accessibility: {
+        //   keyboardNavigation: {
+        //     enabled: true,
+        //     focusBorder: {
+        //       enabled: true,
+        //       hideBrowserFocusOutline: true,
+        //       margin: 2,
+        //       style: {
+        //         borderRadius: 3,
+        //         color: "#335cad",
+        //         lineWidth: 2,
+        //       }
+        //     }
+        //   }
+        // },
         chart: {
           backgroundColor: "none",
           type: "pie", //饼图
@@ -111,7 +126,7 @@ export default {
           },
         ],
       }
-      HighCharts.chart(this.id, option)
+      highcharts.chart(this.id, option)
     },
     // 自适应
     resetTypeface() {

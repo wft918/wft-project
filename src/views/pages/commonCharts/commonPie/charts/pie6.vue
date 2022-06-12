@@ -149,6 +149,21 @@ export default {
         );
       })(highcharts);
       highcharts.chart(this.id, {
+        // accessibility: {
+        //   keyboardNavigation: {
+        //     enabled: true,
+        //     focusBorder: {
+        //       enabled: true,
+        //       hideBrowserFocusOutline: true,
+        //       margin: 2,
+        //       style: {
+        //         borderRadius: 3,
+        //         color: "#335cad",
+        //         lineWidth: 2,
+        //       }
+        //     }
+        //   }
+        // },
         chart: {
           animation: false,
           backgroundColor: "none",
