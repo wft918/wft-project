@@ -12,6 +12,8 @@ const router = new VueRouter({
   routes:[...pageRouter,...viewsRouter],
 });
 
+console.log(router, 'router----->>>')
+
 
 //解决 Vue 重复点击相同路由，出现 Uncaught (in promise) NavigationDuplicated: Avoided redundant navigation 问题
 const VueRouterReplace = VueRouter.prototype.replace

@@ -22,6 +22,11 @@ import VueDraggableResizable from 'vue-draggable-resizable'
 // optionally import default styles
 import 'vue-draggable-resizable/dist/VueDraggableResizable.css'
 
+import highcharts from 'highcharts'
+import highcharts3d from 'highcharts/highcharts-3d'
+ 
+highcharts3d(highcharts)
+
 Vue.component('vue-draggable-resizable', VueDraggableResizable)
 
 
