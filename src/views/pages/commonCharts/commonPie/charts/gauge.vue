@@ -15,13 +15,19 @@ export default {
     };
   },
   mounted() {
-    this.init();
+    this.drawGauge();
+  },
+  props: {
+    value: {
+      type: String,
+      default: '100'
+    }
   },
   destroyed() {
     window.removeEventListener("resize", this.selfAdaption);
   },
   methods: {
-    init() {
+    drawGauge() {
       this.charts = echarts.init(document.getElementById("gauge"));
       let option = {
         tooltip: {
@@ -48,10 +54,15 @@ export default {
             detail: {        // 仪表盘详情，用于显示数据。
               show: true,        // 是否显示详情,默认 true。
               offsetCenter: [0,"80%"],// 相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
-              color: '#000',
+              color: '#fff',
               fontWeight: '700',
               fontSize: '12',
-              formatter: "{value}%\n\n出勤率",  // 格式化函数或者字符串
+              formatter: "{a| " + this.value +"}%\n出勤率",  // 格式化函数或者字符串
+              rich: {
+                a: {
+                  color: '#007acc'
+                }
+              }
             },
             // 整数刻度指示
             splitLine: {
@@ -73,16 +84,25 @@ export default {
             // 刻度数值显示
             axisLabel: {
               show: true,
-              distance: 0,
+              distance: 15,
+              textStyle: {
+                color: '#fff'
+              }
             },
             // 表针显示
             pointer: {
               show: true,
-              length: "30%",
+              length: '50%',
+              width: fontChart(8),
+              // offsetCenter: [0, '-55%'],
+              itemStyle:{
+                color:"#207ade",
+                // opacity: 0.7
+              },
             },
             data: [
               {
-                value: 100,
+                value: parseFloat(this.value),
                 name: "出勤率",
                 nameTextStyle: {
                   fontSize: fontChart(13),
@@ -102,10 +122,8 @@ export default {
     selfAdaption() {
       if(!this.charts) return
       this.charts.resize();
-      this.init()
-    },
-  },
-};
+      this.drawGauge()
+    }
+  }
+}
 </script>
-<style scoped>
-</style>
