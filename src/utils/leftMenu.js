@@ -194,6 +194,13 @@ export default [
         children: [],
         path: '/Three/firstThree',
         component: () => import('@/views/pages/Three/firstThree/index')
+      },
+      {
+        name: 'Three2',
+        id: '52',
+        children: [],
+        path: '/Three/twoThree',
+        component: () => import('@/views/pages/Three/twoThree/index')
       }
     ]
   }

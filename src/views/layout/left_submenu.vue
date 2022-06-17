@@ -7,7 +7,7 @@
       <span>{{menu.name}}</span>
     </template>
     <!-- 递归 -->
-    <sub-menu v-for="(item,i) in menu.children" :key="item.id" :menu="item"></sub-menu>
+    <sub-menu v-for="item in menu.children" :key="item.id" :menu="item"></sub-menu>
   </el-submenu>
 
 
