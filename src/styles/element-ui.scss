@@ -140,17 +140,9 @@
 }
 
 //  表格
-.el-table th {
-  background-color: transparent!important;
-}
-
 .el-table, .el-table__expanded-cell {
   background-color: transparent;
   border: transparent!important;
-}
-
-.el-table th, .el-table tr {
-  background-color: transparent;
 }
 
 .el-table td,
@@ -179,19 +171,34 @@
   background: transparent;
 }
 
+// 表格头部样式
 .el-table th {
-  background-color: transparent !important;
+  background-color: rgba(10, 37, 80, .9) !important;
+  color: #12c2ec!important;
 }
-.el-table .cell {
+// 表格内容的样式
+.el-table tr {
   background-color: transparent;
-  color: #fff;
+  color: #7a9cc2!important;
+}
+//  所有的
+.el-table .cell {
+  // background-color: transparent;
+  // color: #7a9cc2;
   // color: #74a5c9;
+}
+.el-table td.el-table__cell, .el-table th.el-table__cell.is-leaf {
+  border-bottom: 1px solid #10345f;
 }
 .el-table__expand-icon {
   color: #fff;
 }
 .el-table--border::after {
   background-color: transparent!important;
+}
+
+.el-table--border .el-table__cell, .el-table__body-wrapper .el-table--border.is-scrolling-left~.el-table__fixed {
+  border-right: 1px solid #10345f;
 }
 // .el-table--striped,
 // .el-table__body tr,
@@ -216,7 +223,7 @@
 .el-input__inner {
   background: transparent;
   border-color: #4e6bab;
-  color: #c0c4cc;
+  color: #fff;
 }
 //  禁用
 .el-textarea.is-disabled .el-textarea__inner,
@@ -263,11 +270,17 @@
 }
 //  移入树形
 .el-tree-node__content:hover {
-  background-color: #00b0ff !important;
+  background: rgba(0, 229, 255, 0.3) !important;
 }
 // 选中当前node的样式
 .el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content {
-  background-color: #0079ff;
+  background: rgba(0, 229, 255, 0.5)
+}
+.el-tree-node.is-current>.el-tree-node__content {
+  background: rgba(0, 229, 255, 0.5)!important;
+}
+.el-tree-node:focus>.el-tree-node__content {
+  background-color: transparent;
 }
 .el-tree-node__label {
   color: #fff;
@@ -487,6 +500,11 @@
 //   border-color: #4e6bab;
 // }
 
+// 未进入机楼 - 节能诊断、冷战管理、机房管理、健康诊断菜单隐藏
+.hide-curr-menu {
+  // display: none;
+}
+
 //Edit By Fang 由于Avue表格中使用fixed  以下两个样式配合使用
 // 表格中使用fixed  通过以下样式设定
 .el-table__body .el-table__row.hover-row td {
@@ -495,6 +513,54 @@
 
 // 表格中没用fixed  通过以下样式设定
 .el-table tbody tr:hover>td {
-  background: rgba(0, 229, 255, 0.3) !important;
+  background: rgba(0, 229, 255, .2) !important;
 }
 // end
+
+// 动态路由字体
+div.jsoneditor-field {
+  color: #fff!important;
+}
+div.jsoneditor-field:hover {
+  color: #1a1a1a!important;
+}
+
+// el-upload相关
+// .avatar-uploader .el-upload {
+//   border: 1px dashed #d9d9d9;
+//   border-radius: 6px;
+//   margin-left: 20px;
+//   cursor: pointer;
+//   position: relative;
+//   overflow: hidden;
+// }
+// .avatar-uploader .el-upload:hover {
+//   border-color: #409EFF;
+// }
+// .avatar-uploader-icon {
+//   font-size: 28px;
+//   color: #8c939d;
+//   width: 150px;
+//   height: 150px;
+//   line-height: 150px !important;
+//   text-align: center;
+// }
+// .avatar {
+//   width: 150x;
+//   height: 150px;
+//   display: block;
+// }
+
+.el-upload--picture-card {
+  background: none;
+}
+
+
+// element-ui 计数器
+.el-input-number__increase {
+  right: 0!important;
+}
+
+.is-error .el-input-number__decrease, .is-error .el-input-number__increase, .is-success .el-input-number__decrease, .is-success .el-input-number__increase {
+  right: 0!important;
+}

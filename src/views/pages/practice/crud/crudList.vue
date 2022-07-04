@@ -23,26 +23,73 @@
         </el-button>
       </el-form-item>
     </el-form>
-    <el-table :data="dataList" size="medium" border @selection-change="selectionChangeHandle" v-loading="loading" class="table">
-      <el-table-column type="selection" header-align="center" align="center" width="50">
+    <!-- 表格数据 -->
+    <el-table 
+      :data="dataList"
+      size="medium" 
+      border 
+      @selection-change="selectionChangeHandle" 
+      v-loading="loading"
+      class="table"
+    >
+      <template slot="empty">
+        <img src="/svg/empty.svg" alt style="margin: 120px auto 8px auto; height: 50; width: 78px; display: block" />
+        <p style="line-height: 22px; font-size: 14px; margin-bottom: 60px;">说了人家没数据呢</p>
+      </template>
+      <el-table-column 
+        type="selection"
+        header-align="center"
+        align="center"
+        width="50"
+      >
       </el-table-column>
-      <el-table-column prop="name" show-overflow-tooltip label="姓名">
+      <el-table-column
+        prop="name"
+        show-overflow-tooltip
+        label="姓名"
+      >
         <template slot-scope="scope">
           <el-link type="primary" :underline="false"
             @click="edit(scope.row.id)">{{scope.row.name}}</el-link>
         </template>
       </el-table-column>
-      <el-table-column prop="sex" show-overflow-tooltip label="性别">
+      <el-table-column
+        prop="sex"
+        show-overflow-tooltip
+        label="性别"
+      >
       </el-table-column>
-      <el-table-column prop="code" show-overflow-tooltip label="编号">
+      <el-table-column
+        prop="code"
+        show-overflow-tooltip
+        label="编号"
+      >
       </el-table-column>
-      <el-table-column prop="height" show-overflow-tooltip label="身高">
+      <el-table-column
+        prop="height"
+        show-overflow-tooltip
+        label="身高"
+      >
       </el-table-column>
-      <el-table-column prop="shape" show-overflow-tooltip label="体型">
+      <el-table-column
+        prop="shape"
+        show-overflow-tooltip
+        label="体型"
+      >
       </el-table-column>
-      <el-table-column prop="remarks" show-overflow-tooltip label="备注">
+      <el-table-column
+        prop="remarks"
+        show-overflow-tooltip
+        label="备注"
+      >
       </el-table-column>
-      <el-table-column header-align="center" align="center" fixed="right" width="200" label="操作">
+      <el-table-column 
+        header-align="center"
+        align="center"
+        fixed="right"
+        width="200"
+        label="操作"
+      >
         <template slot-scope="scope">
           <el-button type="text" icon="el-icon-view" size="small" @click="view(scope.row.id)">查看</el-button>
           <el-button type="text" icon="el-icon-edit" size="small" @click="edit(scope.row.id)">修改</el-button>
@@ -50,6 +97,7 @@
         </template>
       </el-table-column>
     </el-table>
+    <!-- 分页 -->
     <el-pagination @size-change="sizeChangeHandle" @current-change="currentChangeHandle" :current-page="pageNo"
       :page-sizes="[10, 20, 50, 100]" :page-size="pageSize" :total="total" background
       layout="total, sizes, prev, pager, next, jumper">
