@@ -120,6 +120,13 @@ export default [
         children:[],
         path:'/practice/svg',
         component: () => import('@/views/pages/practice/svg/index')
+      },
+      {
+        name:'crypto',
+        id:'297',
+        children:[],
+        path:'/practice/crypto-js',
+        component: () => import('@/views/pages/practice/crypto/index')
       }
     ]
   },
