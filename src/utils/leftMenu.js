@@ -110,6 +110,12 @@ export default [
         id:'297',
         children:[],
         path:'/practice/crypto/index'
+      },
+      {
+        name:'数字滚动',
+        id:'298',
+        children:[],
+        path:'/practice/vCountTo/index'
       }
     ]
   },
