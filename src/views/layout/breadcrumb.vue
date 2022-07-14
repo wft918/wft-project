@@ -2,7 +2,7 @@
 <template>
   <div style="width:100%;height: 100%;overflow-x: auto;overflow-y: hidden;">
     <el-tabs v-model="currentNamePath" type="card" @tab-click="tabClick" @tab-remove="tabRemove">
-      <el-tab-pane :label="'首页'" :name="'/home'"></el-tab-pane>
+      <el-tab-pane :label="'首页'" :name="'/home/index'"></el-tab-pane>
       <el-tab-pane v-for="mainTab in mainTabs" :key="mainTab.path" :label="mainTab.meta.title" :name="mainTab.path" closable></el-tab-pane>
     </el-tabs>
   </div>
@@ -12,11 +12,11 @@
     data() {
       return {
         breadcrumbList:[],
-        currentNamePath:'/home'
+        currentNamePath:'/home/index'
       }
     },
     mounted() {
-      if(this.$route.path !== '/home') {
+      if(this.$route.path !== '/home/index') {
         this.mainTabs = this.$route
         this.currentNamePath = this.$route.path
       }
@@ -34,7 +34,7 @@
     watch: {
       '$route': {
         handler(to,from) {
-          if(to.path != '/home') {
+          if(to.path != '/home/index') {
             this.mainTabs = to
           }
           this.currentNamePath = to.path
@@ -55,7 +55,7 @@
         this.mainTabs = idx
         if(namePath === this.$route.path) {   //删除的是当前页面  考虑路由跳转问题   不一样不需要考虑
           if(!this.mainTabs.length) {  //删除之后没有长度
-            this.$router.replace({ path: '/home' })
+            this.$router.replace({ path: '/home/index' })
           }else if(idx === this.mainTabs.length) {  //删除的是最后一个
             this.$router.replace({path: this.mainTabs[idx - 1].path})
           }else {
