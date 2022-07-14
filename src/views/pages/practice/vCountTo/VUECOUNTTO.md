@@ -110,6 +110,9 @@ export default {
 vue-count-to组件最终编译出来就是个span标签；就像router-link编译出来为a标签一样
 所以我们给数字滚动设置样式的时候，直接把它当作span标签就可以
 
+vue-count-to只适用于vue2
+vue3要使用vue3-count-to(但是经过测试发现，vue3-count-to还有问题。不报错，并且用不了)
+
 # dataV中的数字翻牌器官网
 http://datav.jiaminghi.com/guide/digitalFlop.html
 
