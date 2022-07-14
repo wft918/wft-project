@@ -1,15 +1,15 @@
 <template>
   <div class="main">
     <div class="top">
-      <top></top>
+      <Top />
     </div>
     <div class="bottom">
       <div class="left">
-        <left></left>
+        <Left />
       </div>
       <div class="right">
         <div class="breadcrumb">
-          <breadcrumb></breadcrumb>
+          <Breadcrumb />
         </div>
         <div class="content-main">
           <router-view></router-view>
@@ -21,9 +21,9 @@
 
 <script>
 import '@/utils/flexible'
-import top from './layout/top'
-import left from './layout/left'
-import breadcrumb from './layout/breadcrumb'
+import Top from './layout/top'
+import Left from './layout/left'
+import Breadcrumb from './layout/breadcrumb'
 export default {
   data() {
     return {
@@ -31,9 +31,9 @@ export default {
     }
   },
   components: {
-    top,
-    left,
-    breadcrumb
+    Top,
+    Left,
+    Breadcrumb
   },
   mounted() {
 

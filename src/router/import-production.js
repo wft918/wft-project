@@ -1,0 +1,1 @@
+module.exports = path => () => import(`../views/pages${ path }.vue`)

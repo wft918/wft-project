@@ -1,0 +1,1 @@
+module.exports = path => resolve => require([`@/views/pages${ path }.vue`], resolve)
