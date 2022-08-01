@@ -17,6 +17,7 @@
     "d3": "^7.4.4",
     "echarts": "^5.2.2",
     "el-tree-transfer": "^2.4.7",
+    "element-china-area-data": "^5.0.2",
     "element-ui": "^2.15.6",
     "fabric": "^5.2.1",
     "file-saver": "^2.0.5",

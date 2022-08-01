@@ -9,9 +9,13 @@
       ref="tree"
     ></el-tree>
     <el-button @click="btnClick()">点击选中</el-button>
+    <br>
+    <br>
+    <ElChinaAreaData />
   </div>
 </template>
 <script>
+import ElChinaAreaData from './elChinaAreaData.vue'
 export default {
   data() {
     return {
@@ -65,6 +69,9 @@ export default {
       },
       currKey: ''
     };
+  },
+  components: {
+    ElChinaAreaData
   },
   mounted() {
     
